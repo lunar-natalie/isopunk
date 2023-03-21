@@ -14,6 +14,7 @@ jobs:
       - name: Configure and build
         uses: threeal/cmake-action@latest
         with:
+          args: -DCMAKE_BUILD_TYPE:STRING=Debug
           generator: Ninja
           cxx-compiler: clang++
           run-test: true
