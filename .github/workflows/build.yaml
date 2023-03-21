@@ -1,0 +1,17 @@
+name: build
+on:
+  push:
+jobs:
+  build-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3.3.0
+
+      - name: Configure and build
+        uses: threeal/cmake-action@latest
+        with:
+          generator: Ninja
+          c-compiler: clang
+          cxx-compiler: clang++
+          run-test: true

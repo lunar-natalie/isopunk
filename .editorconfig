@@ -11,6 +11,9 @@ trim_trailing_whitespace = true
 [*.md]
 tab_width = 2
 
+[*.yaml]
+tab_width = 2
+
 [{CMakeLists.txt,*.cmake{,.in}}]
 tab_width = 2
 
