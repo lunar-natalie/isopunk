@@ -1,7 +1,7 @@
 <p style="text-align: center">
-  <img src="https://github.com/lunar-natalie/isopunk/docs/assets/banner.png"
+  <img src="https://github.com/lunar-natalie/isopunk/raw/main/docs/assets/banner.png"
     alt="IsoPunk" style="width: 100vw"><br>
-  <img src="https://github.com/lunar-natalie/isopunk/docs/assets/tools.png"
+  <img src="https://github.com/lunar-natalie/isopunk/raw/main/docs/assets/tools.png"
     alt="Tools" style="width: 50vw"><br>
   <br>
   <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/ci.yaml/badge.svg"
