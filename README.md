@@ -14,9 +14,8 @@
   A cross-platform isometric turn-based strategy game with a cyberpunk theme.<br><br>
 </p>
 
-# Table of contents
+**Contents**
 
-* [Table of contents](#table-of-contents)
 * [Supported platforms](#supported-platforms)
 * [Dependencies](#dependencies)
   * [Runtime](#runtime)
