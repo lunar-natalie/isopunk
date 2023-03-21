@@ -14,7 +14,7 @@
   A cross-platform isometric turn-based strategy game with a cyberpunk theme.<br><br>
 </p>
 
-## Table of contents
+# Table of contents
 
 * [Table of contents](#table-of-contents)
 * [Supported platforms](#supported-platforms)
@@ -34,22 +34,22 @@
   * [File formatting](#file-formatting)
 * [License](#license)
 
-## Supported platforms
+# Supported platforms
 
 * Linux
 * Windows 7 or newer (**TODO**)
 * macOS 10.11 or newer (**TODO**)
 
-## Dependencies
+# Dependencies
 
-### Runtime
+## Runtime
 
 * Vulkan 1.0 or newer implementation
 * Wayland or X11 (Linux)
 
 **TODO**: Package
 
-### Development
+## Development
 
 * C++20 toolchain
 * CMake 3.21 or newer
@@ -66,9 +66,9 @@ Optional:
 
 **TODO**: Manage
 
-## Development
+# Development
 
-### Using VS Code
+## Using VS Code
 
 * Install the recommended workspace extensions when prompted, or run the
   `Extensions: Show Recommended Extensions` command and click the
@@ -94,7 +94,7 @@ Debug game:
 Test:
 * `CMake: Run Tests`
 
-### Standalone
+## Standalone
 
 Configure:
 * Debug target
@@ -118,7 +118,7 @@ Run:
 build/src/game/isopunk
 ```
 
-## ipkengine
+# ipkengine
 
 The IsoPunk game engine, `ipkengine`, is exported as a library using CMake and
 can be used to build applications externally. See the code documentation for
@@ -126,9 +126,9 @@ its usage.
 
 **TODO**: Publish docs
 
-## Structure
+# Structure
 
-### Source directories
+## Source directories
 
 * `include` - Headers, stored in the project subdirectory. C++20 modules are not
   used in this project due to the lack of support for external use.
@@ -139,7 +139,7 @@ its usage.
 * `tests` - Unit tests, split into subdirectories corresponding to the name of
   each tested component.
 
-### Filenames
+## Filenames
 
 Source and header filenames are written in snake case. CMake filenames are
 written in Pascal case.
@@ -149,7 +149,7 @@ written in Pascal case.
 |---------------|-------------|-------------|
 | **Extension** |`.cc`        |`.h`         |
 
-### File comments
+## File comments
 
 **C++**
 * Files should be prefixed with a short description followed by an empty comment
@@ -165,12 +165,12 @@ written in Pascal case.
 **CMake**
 * Files should start with `## A SHORT DESCRIPTION`.
 
-### Documentation comments
+## Documentation comments
 
 The public API is documented using Doxygen comments, denoted by a `///` in the
 source code. Private identifiers may also be documented in this way.
 
-### Code style
+## Code style
 
 Each C/C++ header should be encapsulated with an include guard using an
 identifier with the name of the source file in the form
@@ -181,12 +181,12 @@ Code should be formatted according to the ClangFormat rules. To enforce this
 style, installing ClangFormat is recommended as it is run at build time when
 available.
 
-### File formatting
+## File formatting
 
 All project files should be formatted according to the EditorConfig rules. Many
 editors support the EditorConfig system.
 
-## License
+# License
 
 Copyright (c) 2023 Natalie Wiggins.
 
