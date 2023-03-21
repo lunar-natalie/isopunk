@@ -1,0 +1,8 @@
+## IsoPunk CMake package config.
+
+@PACKAGE_INIT@
+
+check_required_components(@PROJECT_NAME@)
+
+include("${CMAKE_CURRENT_LIST_DIR}/EngineTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/HeadersTargets.cmake")

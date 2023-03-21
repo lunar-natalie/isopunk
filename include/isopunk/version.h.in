@@ -1,0 +1,20 @@
+// This header is part of the IsoPunk Engine API.
+//
+// Copyright (c) 2023 Natalie Wiggins <islifepeachy@outlook.com>
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+#ifndef ISOPUNK_VERSION_H
+#define ISOPUNK_VERSION_H
+
+#include <cstdint>
+
+namespace isopunk::config {
+
+constexpr const uint32_t VERSION_MAJOR = @PROJECT_VERSION_MAJOR@;
+constexpr const uint32_t VERSION_MINOR = @PROJECT_VERSION_MINOR@;
+constexpr const uint32_t VERSION_PATCH = @PROJECT_VERSION_PATCH@;
+
+} // namespace isopunk::config
+
+#endif // ISOPUNK_VERSION_H

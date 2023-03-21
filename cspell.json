@@ -1,0 +1,45 @@
+{
+    "version": "0.2",
+    "ignorePaths": [
+        "*.in"
+    ],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": [
+        "Cppcheck",
+        "Cygwin",
+        "Deinitializes",
+        "DIRN",
+        "DOXYFILE",
+        "Doxygen",
+        "endcond",
+        "GLFW",
+        "glfwm",
+        "headerfile",
+        "ipkengine",
+        "isopunk",
+        "MAINPAGE",
+        "MDFILE",
+        "POSIX",
+        "Stroustrup",
+        "vkfw",
+        "Vulkan",
+        "WINDOWPOS"
+    ],
+    "ignoreWords": [],
+    "import": [],
+    "patterns": [
+        {
+            "name": "markdown-code-block",
+            "pattern": "/^(\\s*`{3,}).*[\\s\\S]*?^\\1/gmx"
+        }
+    ],
+    "languageSettings": [
+        {
+            "languageId": "markdown",
+            "ignoreRegExpList": [
+                "markdown-code-block"
+            ]
+        }
+    ]
+}
