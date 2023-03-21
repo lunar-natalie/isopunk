@@ -9,7 +9,7 @@
   <br>
   <b>IsoPunk</b><br>
   <br>
-  // Under Construction //<br>
+  <i>// Under Construction //</i><br>
   <br>
   A cross-platform isometric turn-based strategy game with a cyberpunk theme.<br>
   <br>
