@@ -32,7 +32,7 @@
     "patterns": [
         {
             "name": "library-name",
-            "pattern": "lib*"
+            "pattern": "lib.*"
         },
         {
             "name": "cmake-option",
