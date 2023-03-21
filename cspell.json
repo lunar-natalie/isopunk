@@ -31,6 +31,10 @@
     "import": [],
     "patterns": [
         {
+            "name": "library-name",
+            "pattern": "lib*"
+        },
+        {
             "name": "cmake-option",
             "pattern": "-D.*"
         },
@@ -49,6 +53,7 @@
         {
             "languageId": "*",
             "ignoreRegExpList": [
+                "library-name",
                 "cmake-option"
             ]
         }

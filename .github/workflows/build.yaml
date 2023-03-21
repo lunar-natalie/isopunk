@@ -1,10 +1,13 @@
-name: build
+name: Build
 on:
   push:
 jobs:
-  build-project:
+  build:
     runs-on: ubuntu-latest
     steps:
+      - name: Install dependencies
+        run: sudo apt-get install -y libsdl2-dev libboost-all-dev libvulkan-dev libglm-dev
+
       - name: Check out repository
         uses: actions/checkout@v3.3.0
 
