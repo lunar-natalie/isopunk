@@ -1,8 +1,8 @@
-<p style="text-align: center">
+<p align="center">
   <img src="https://github.com/lunar-natalie/isopunk/raw/main/docs/assets/banner.png"
-    alt="IsoPunk" style="width: 100vw"><br>
+    alt="IsoPunk" width="1000"><br>
   <img src="https://github.com/lunar-natalie/isopunk/raw/main/docs/assets/tools.png"
-    alt="Tools" style="width: 50vw"><br>
+    alt="Tools" width="500"><br>
   <br>
   <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/ci.yaml/badge.svg"
     alt="CI"><br>
