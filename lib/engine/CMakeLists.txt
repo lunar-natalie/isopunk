@@ -20,7 +20,7 @@ target_link_libraries(Engine
   PUBLIC
     Headers
 
-    glm
+    glm::glm
     SDL2::SDL2main
 )
 
