@@ -8,11 +8,15 @@ set(IsoPunk_INCLUDE_DIRS
 configure_file(isopunk/version.h.in
   "${CMAKE_CURRENT_BINARY_DIR}/isopunk/version.h")
 
-add_library(Headers INTERFACE
-  "${CMAKE_CURRENT_BINARY_DIR}/isopunk/version.h"
-  isopunk/engine.h
-  isopunk/engine/config.h
-  isopunk/engine/utils.h
+add_library(Headers INTERFACE)
+
+target_sources(Headers PUBLIC FILE_SET HEADERS
+  BASE_DIRS "${CMAKE_CURRENT_BINARY_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}"
+  FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/isopunk/version.h"
+    isopunk/engine.h
+    isopunk/engine/config.h
+    isopunk/engine/utils.h
 )
 
 set_target_properties(Headers
@@ -22,8 +26,7 @@ set_target_properties(Headers
 
 target_compile_definitions(Headers
   INTERFACE
-    VULKAN_HPP_NO_CONSTRUCTORS
-)
+    VULKAN_HPP_NO_CONSTRUCTORS)
 
 target_include_directories(Headers
   INTERFACE
@@ -40,11 +43,8 @@ target_link_libraries(Headers
 
 if(IsoPunk_INSTALL_LIBS)
   install(TARGETS Headers
-    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
-
-  install(TARGETS Headers
     EXPORT HeadersTargets
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+    FILE_SET HEADERS DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
 
   install(EXPORT HeadersTargets
     FILE HeadersTargets.cmake
