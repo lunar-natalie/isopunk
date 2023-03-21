@@ -11,11 +11,11 @@
   <br>
   // Under Construction //<br>
   <br>
-  A cross-platform isometric turn-based strategy game with a cyberpunk theme.<br><br>
+  A cross-platform isometric turn-based strategy game with a cyberpunk theme.<br>
+  <br>
 </p>
 
 **Contents**
-
 * [Supported platforms](#supported-platforms)
 * [Dependencies](#dependencies)
   * [Runtime](#runtime)
@@ -57,7 +57,7 @@
 * GLM
 * Vulkan 1.0 or newer headers, including `vulkan-hpp`
 
-Optional:
+**Optional**
 * Doxygen
 * ClangFormat
 * Cppcheck
@@ -78,41 +78,41 @@ Optional:
 The provided commands can be run from the Command Palette (default shortcut:
 `Ctrl/Cmd+Shift+P`).
 
-Build:
+**Build targets**
 * `Tasks: Run Build Task`
   * Default shortcut: `Ctrl/Cmd+Shift+B`
 
-Run game:
+**Run the game**
 * `CMake: Run Without Debugging`
   * Default shortcut: `Shift+F5`
 
-Debug game:
+**Debug the game**
 * `CMake: Debug`
   * Default shortcut: `Ctrl/Cmd+F5`
 
-Test:
+**Run tests**
 * `CMake: Run Tests`
 
 ## Standalone
 
-Configure:
-* Debug target
+**Configure**
+* Debug build type
   ```shell
   mkdir -p build && \
   cmake -DCMAKE_BUILD_TYPE=Debug -S. -Bbuild
   ```
-* Release target
+* Release build type
   ```shell
   mkdir -p build && \
   cmake -S. -Bbuild
   ```
 
-Build:
+**Build**
 ```shell
 cmake --build build
 ```
 
-Run:
+**Run**
 ```shell
 build/src/game/isopunk
 ```
@@ -161,6 +161,7 @@ written in Pascal case.
 //
 // SPDX-License-Identifier: IDENTIFIER
 ```
+
 **CMake**
 * Files should start with `## A SHORT DESCRIPTION`.
 
