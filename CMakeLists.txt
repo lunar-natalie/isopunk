@@ -24,7 +24,7 @@ else()
   set(IsoPunk_BUILD_RELEASE ON)
 endif()
 
-option(IsoPunk_BUILD_DOCS "Enable documentation" ${IsoPunk_BUILD_RELEASE})
+option(IsoPunk_BUILD_DOCS "Enable documentation" OFF)
 option(IsoPunk_BUILD_DOCS_AUX "Build auxiliary documentation" ON)
 option(IsoPunk_BUILD_DOCS_COMB "Combine component documentation into a single directory" ON)
 option(IsoPunk_BUILD_DOCS_INCLUDE "Build include documentation" ON)
