@@ -24,9 +24,10 @@
 * [Development](#development-1)
   * [Using VS Code](#using-vs-code)
   * [Standalone](#standalone)
-* [ipkengine](#ipkengine)
+* [`ipkengine` and documentation](#ipkengine-and-documentation)
 * [Structure](#structure)
   * [Source directories](#source-directories)
+* [Source files](#source-files)
   * [Filenames](#filenames)
   * [File comments](#file-comments)
   * [Documentation comments](#documentation-comments)
@@ -118,13 +119,11 @@ cmake --build build
 build/src/game/isopunk
 ```
 
-# ipkengine
+# `ipkengine` and documentation
 
 The IsoPunk game engine, `ipkengine`, is exported as a library using CMake and
-can be used to build applications externally. See the code documentation for
-its usage.
-
-**TODO**: Publish docs
+can be used to build applications externally. See the [documentation][www-docs]
+for its usage.
 
 # Structure
 
@@ -138,6 +137,12 @@ its usage.
   name of each executable target.
 * `tests` - Unit tests, split into subdirectories corresponding to the name of
   each tested component.
+
+# Source files
+
+The source files comprising each target can be found and modified in the calls
+to `add_library`, `add_executable` and `target_sources` within the
+`CMakeLists.txt` file of each processed source directory.
 
 ## Filenames
 
@@ -204,3 +209,6 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <https://www.gnu.org/licenses/>.
 
 See the `LICENSE` file for more information.
+
+
+[www-docs]: https://lunar-natalie.github.io/isopunk
