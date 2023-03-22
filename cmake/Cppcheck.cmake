@@ -5,7 +5,7 @@ find_program(CPPCHECK NAMES cppcheck)
 
 if(NOT (CPPCHECK STREQUAL "CPPCHECK-NOTFOUND"))
   add_custom_target(Cppcheck ALL
-    COMMAND ${CPPCHECK}
+    COMMAND "${CPPCHECK}"
       --enable=warning,performance,portability,information,missingInclude
       --suppress=missingIncludeSystem
       --std=c++${${PROJECT_NAME}_CXX_STANDARD}
