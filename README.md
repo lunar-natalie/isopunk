@@ -5,12 +5,18 @@
   <img src="https://github.com/lunar-natalie/isopunk/raw/main/docs/assets/tools.png"
     alt="Tools" width="500"><br>
   <br>
-  <img src="https://img.shields.io/github/license/lunar-natalie/isopunk"
-    alt="License">
-  <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/ci.yaml/badge.svg?event=push"
-    alt="CI">
-  <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/docs.yaml/badge.svg?event=push"
-    alt="Documentation">
+  <a href="https://github.com/lunar-natalie/isopunk/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/lunar-natalie/isopunk"
+      alt="License">
+  </a>
+  <a href="https://github.com/lunar-natalie/isopunk/actions/workflows/ci.yaml">
+    <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/ci.yaml/badge.svg?event=push"
+      alt="CI">
+  </a>
+  <a href="https://lunar-natalie.github.io/isopunk">
+    <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/docs.yaml/badge.svg?event=push"
+      alt="Documentation">
+  </a>
     <br>
   <br>
   <b>IsoPunk</b><br>
