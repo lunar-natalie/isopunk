@@ -10,10 +10,8 @@
 
 using namespace isopunk;
 
-const EngineConfig EngineConfig::default_config{
-    .application_name = "IsoPunk",
-    .application_version = {.major = config::VERSION_MAJOR,
-                            .minor = config::VERSION_MINOR,
-                            .patch = config::VERSION_PATCH},
-    .window_width = 800,
-    .window_height = 600};
+const EngineConfig EngineConfig::default_config{.application_name = "IsoPunk",
+                                                .application_version =
+                                                    config::ENGINE_VERSION,
+                                                .window_width = 800,
+                                                .window_height = 600};

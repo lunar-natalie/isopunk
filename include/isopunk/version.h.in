@@ -7,13 +7,14 @@
 #ifndef ISOPUNK_VERSION_H
 #define ISOPUNK_VERSION_H
 
-#include <cstdint>
+#include <isopunk/engine/config.h>
 
 namespace isopunk::config {
 
-constexpr const uint32_t VERSION_MAJOR = @PROJECT_VERSION_MAJOR@;
-constexpr const uint32_t VERSION_MINOR = @PROJECT_VERSION_MINOR@;
-constexpr const uint32_t VERSION_PATCH = @PROJECT_VERSION_PATCH@;
+constexpr const EngineConfig::Version ENGINE_VERSION = {
+    .major = @PROJECT_VERSION_MAJOR@,
+    .minor = @PROJECT_VERSION_MINOR@,
+    .patch = @PROJECT_VERSION_PATCH@};
 
 } // namespace isopunk::config
 

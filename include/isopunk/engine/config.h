@@ -10,6 +10,8 @@
 #include <cstdint>
 #include <string>
 
+#include <vulkan/vulkan.hpp>
+
 namespace isopunk {
 
 /// @brief Engine configuration.
@@ -32,6 +34,15 @@ struct EngineConfig {
 
         /// @brief Patch version number.
         uint32_t patch;
+
+        /// @brief Generates a Vulkan API version from the version numbers in
+        /// the object.
+        ///
+        /// @return Vulkan API version value.
+        uint32_t vk_make_api_version() const
+        {
+            return VK_MAKE_API_VERSION(0, major, minor, patch);
+        }
     };
 
     /// @brief Application version.

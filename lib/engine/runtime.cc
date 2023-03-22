@@ -32,7 +32,7 @@ void Engine::init()
     sdl_assert(window != NULL);
 
     // Load core Vulkan structures.
-    init_vk();
+    vk_init();
 }
 
 void Engine::run()
@@ -56,7 +56,11 @@ void Engine::run()
     }
 }
 
-void Engine::terminate()
+void Engine::terminate() const noexcept
 {
+    // Deinitialize core Vulkan structures.
+    vk_deinit();
+
+    // Destroy the main window.
     SDL_DestroyWindow(window);
 }

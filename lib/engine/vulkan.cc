@@ -20,7 +20,7 @@
 
 using namespace isopunk;
 
-void Engine::init_vk()
+void Engine::vk_init()
 {
     // TODO
     vk_get_instance_extensions();
@@ -29,10 +29,14 @@ void Engine::init_vk()
 
 void Engine::vk_get_instance_extensions()
 {
+    // Enumerate extensions.
     unsigned int extension_count;
     sdl_assert(
         SDL_Vulkan_GetInstanceExtensions(window, &extension_count, nullptr));
+
     extensions = std::vector<const char*>(extension_count);
+
+    // Get names.
     sdl_assert(SDL_Vulkan_GetInstanceExtensions(window, &extension_count,
                                                 extensions.data()));
 }
@@ -41,13 +45,9 @@ void Engine::vk_create_instance()
 {
     vk::ApplicationInfo app_info{
         .pApplicationName = config.application_name.c_str(),
-        .applicationVersion = VK_MAKE_API_VERSION(
-            0, config.application_version.major,
-            config.application_version.minor, config.application_version.patch),
+        .applicationVersion = config.application_version.vk_make_api_version(),
         .pEngineName = "ipkengine",
-        .engineVersion =
-            VK_MAKE_API_VERSION(0, config::VERSION_MAJOR, config::VERSION_MINOR,
-                                config::VERSION_PATCH),
+        .engineVersion = config::ENGINE_VERSION.vk_make_api_version(),
         .apiVersion = VK_API_VERSION_1_0};
 
     vk::InstanceCreateInfo create_info{
@@ -63,4 +63,9 @@ void Engine::vk_create_instance()
     catch (vk::SystemError& e) {
         throw std::runtime_error(e.what());
     }
+}
+
+void Engine::vk_deinit() const noexcept
+{
+    vk_instance.destroy();
 }

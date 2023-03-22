@@ -88,7 +88,7 @@ protected:
     /// This method should be called in the destructor of the derived game class
     /// to implicitly deinitialize engine internals and frameworks when the
     /// instance goes out of scope or the program itself is terminated.
-    void terminate();
+    void terminate() const noexcept;
 
     ////////////////////////////////////////////////////////////////////////////
     // Protected properties ////////////////////////////////////////////////////
@@ -112,7 +112,7 @@ private:
     ///
     /// @throw std::runtime_error if a fatal error occurs in the initialization
     /// process.
-    void init_vk();
+    void vk_init();
 
     /// @brief Gets the available Vulkan instance extensions.
     ///
@@ -130,6 +130,9 @@ private:
     /// @throw std::runtime_error if a fatal error occurs in the initialization
     /// process.
     void vk_create_instance();
+
+    /// @brief Deinitializes the Vulkan API.
+    void vk_deinit() const noexcept;
 
     /// @brief Renders all objects within the main loop.
     void draw();
