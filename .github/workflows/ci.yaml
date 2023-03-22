@@ -12,6 +12,7 @@ jobs:
         with:
           packages: libsdl2-dev libboost-all-dev libvulkan-dev libglm-dev cppcheck clang-format
           version: 1.0
+          execute_install_scripts: true
 
       - name: Checkout
         uses: actions/checkout@v3.3.0
