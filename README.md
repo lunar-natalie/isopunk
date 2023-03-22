@@ -36,7 +36,7 @@
   * [Using VS Code](#using-vs-code)
   * [Standalone](#standalone)
 * [`ipkengine` and documentation](#ipkengine-and-documentation)
-* [Structure](#structure)
+* [Project structure](#project-structure)
   * [Source directories](#source-directories)
 * [Source files](#source-files)
   * [Filenames](#filenames)
@@ -136,7 +136,7 @@ The IsoPunk game engine, `ipkengine`, is exported as a library using CMake and
 can be used to build applications externally. See the [documentation][www-docs]
 for its usage.
 
-# Structure
+# Project structure
 
 ## Source directories
 
