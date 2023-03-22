@@ -22,7 +22,7 @@ struct EngineConfig {
     /// used as the title of the main window.
     std::string application_name;
 
-    /// @brief Application version.
+    /// @brief Software version.
     struct Version {
         /// @brief Major version number.
         uint32_t major;
@@ -32,7 +32,10 @@ struct EngineConfig {
 
         /// @brief Patch version number.
         uint32_t patch;
-    } application_version;
+    };
+
+    /// @brief Application version.
+    Version application_version;
 
     /// @brief Initial width of the main window.
     uint32_t window_width;
