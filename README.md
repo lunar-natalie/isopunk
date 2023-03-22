@@ -16,14 +16,14 @@
   <a href="https://lunar-natalie.github.io/isopunk">
     <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/docs.yaml/badge.svg?event=push"
       alt="Documentation">
-  </a>
-    <br>
+  </a><br>
   <br>
   <b>IsoPunk</b><br>
   <br>
   <i>// Under Construction //</i><br>
   <br>
-  A cross-platform isometric turn-based strategy game with a cyberpunk theme.<br>
+  A cross-platform isometric turn-based strategy game with a cyberpunk theme.
+    <br>
   <br>
 </p>
 
