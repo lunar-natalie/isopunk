@@ -20,14 +20,8 @@
   <br>
   <b>IsoPunk</b><br>
   <br>
-  <a href="https://lunar-natalie.github.io/isopunk">Docs 🕮</a> |
-  <a href="https://github.com/lunar-natalie/isopunk">
-    GitHub
-    <picture width="20">
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/lunar-natalie/isopunk/raw/main/docs/assets/github-mark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://github.com/lunar-natalie/isopunk/raw/main/docs/assets/github-mark-white.svg">
-    </picture>
-  </a><br>
+  <a href="https://lunar-natalie.github.io/isopunk">Docs</a> |
+    <a href="https://github.com/lunar-natalie/isopunk">GitHub</a><br>
   <br>
   <i>// Under Construction //</i><br>
   <br>
