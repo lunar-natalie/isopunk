@@ -13,12 +13,14 @@
     <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/ci.yaml/badge.svg?event=push"
       alt="CI">
   </a>
-  <a href="https://lunar-natalie.github.io/isopunk">
+  <a href="https://github.com/lunar-natalie/isopunk/actions/workflows/docs.yaml">
     <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/docs.yaml/badge.svg?event=push"
       alt="Documentation">
   </a><br>
   <br>
   <b>IsoPunk</b><br>
+  <br>
+  <a href="https://lunar-natalie.github.io/isopunk">Docs</a><br>
   <br>
   <i>// Under Construction //</i><br>
   <br>
