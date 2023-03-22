@@ -5,8 +5,13 @@
   <img src="https://github.com/lunar-natalie/isopunk/raw/main/docs/assets/tools.png"
     alt="Tools" width="500"><br>
   <br>
+  <img src="https://img.shields.io/github/license/lunar-natalie/isopunk"
+    alt="License">
   <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/ci.yaml/badge.svg"
-    alt="CI"><br>
+    alt="CI">
+  <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/docs.yaml/badge.svg"
+    alt="Docs">
+    <br>
   <br>
   <b>IsoPunk</b><br>
   <br>
