@@ -76,21 +76,27 @@ if(IsoPunk_ENABLE_STYLED_DOCS)
 
   ExternalProject_Add(doxygen-awesome-css
     PREFIX "${CMAKE_CURRENT_BINARY_DIR}"
-    GIT_REPOSITORY https://github.com/jothepro/doxygen-awesome-css.git
+    GIT_REPOSITORY "https://github.com/jothepro/doxygen-awesome-css.git"
     GIT_TAG v2.2.0
     TIMEOUT 10
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
-    INSTALL_COMMAND ""
-    LOG_DOWNLOAD ON)
+    INSTALL_COMMAND "")
 
-  set(DOXYGEN_STYLE_CONFIG "\
+  set(DOXYGEN_STYLESHEET
+    "${CMAKE_CURRENT_BINARY_DIR}/src/doxygen-awesome-css/doxygen-awesome.css")
+
+  if(EXISTS "${DOXYGEN_STYLESHEET}")
+    set(DOXYGEN_STYLE_CONFIG "\
 GENERATE_TREEVIEW = YES
 DISABLE_INDEX = NO
 FULL_SIDEBAR = NO
 HTML_EXTRA_STYLESHEET = ${CMAKE_CURRENT_BINARY_DIR}/src/doxygen-awesome-css/doxygen-awesome.css
 HTML_COLORSTYLE = LIGHT\
 ")
+  else()
+    message("Failed to retrieve Doxygen stylesheet")
+  endif()
 endif()
 
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/GenerateDocs.cmake.in"
