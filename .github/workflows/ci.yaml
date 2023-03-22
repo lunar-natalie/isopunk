@@ -1,5 +1,7 @@
+# Continuous integration to build and test all project components.
 name: CI
 on:
+  # Any branch pushed to
   push:
 jobs:
   Build:
@@ -8,7 +10,7 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y libsdl2-dev libboost-all-dev libvulkan-dev libglm-dev cppcheck
 
-      - name: Check out repository
+      - name: Checkout
         uses: actions/checkout@v3.3.0
 
       - name: Configure and build
