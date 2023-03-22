@@ -31,6 +31,7 @@ option(IsoPunk_BUILD_DOCS_INCLUDE "Build include documentation" ON)
 option(IsoPunk_BUILD_DOCS_SRC "Build src documentation" OFF)
 option(IsoPunk_BUILD_GAME "Build the game" ON)
 option(IsoPunk_ENABLE_LIBS "Build libraries" ON)
+option(IsoPunk_ENABLE_STYLED_DOCS "Enable custom CSS in HTML generated documentation" ON)
 option(IsoPunk_ENABLE_TESTS "Enable unit tests" ${IsoPunk_BUILD_DEBUG})
 option(IsoPunk_INSTALL_LIBS "Install libraries" ON)
 
@@ -62,6 +63,10 @@ find_package(glm REQUIRED)
 # Documentation generator.
 find_package(Doxygen)
 
+# Git
+# Used for obtaining documentation CSS.
+find_package(Git)
+
 ################################################################################
 ## Optional components #########################################################
 ################################################################################
@@ -85,11 +90,15 @@ if(IsoPunk_ENABLE_TESTS)
 endif()
 
 # Documentation
-# Requires Doxygen.
+# Requires Doxygen, and Git if styles are enabled.
 if(IsoPunk_BUILD_DOCS)
   if(NOT DOXYGEN_FOUND)
     set(IsoPunk_BUILD_DOCS OFF)
     message("Doxygen not found. Documentation generation is unavailable.")
+  endif()
+  if(NOT Git_FOUND)
+    set(IsoPunk_ENABLE_STYLED_DOCS OFF)
+    message("Git not found. Styled documentation is unavailable.")
   endif()
 endif()
 
@@ -130,11 +139,13 @@ include("${IsoPunk_CMAKE_SOURCE_DIR}/ClangFormat.cmake")
 ## Project components ##########################################################
 ################################################################################
 
-# Headers
-add_subdirectory(include)
+if(IsoPunk_ENABLE_LIBS)
+  # Headers
+  add_subdirectory(include)
 
-# Libraries
-add_subdirectory(lib)
+  # Libraries
+  add_subdirectory(lib)
+endif()
 
 # Executables
 add_subdirectory(src)

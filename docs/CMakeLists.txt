@@ -71,6 +71,28 @@ endif()
 
 string(REPLACE ";" " " DOXYGEN_STRIP_FROM_INC_PATH "${DOXYGEN_PATH_LIST}")
 
+if(IsoPunk_ENABLE_STYLED_DOCS)
+  include(ExternalProject)
+
+  ExternalProject_Add(doxygen-awesome-css
+    PREFIX "${CMAKE_CURRENT_BINARY_DIR}"
+    GIT_REPOSITORY https://github.com/jothepro/doxygen-awesome-css.git
+    GIT_TAG v2.2.0
+    TIMEOUT 10
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND ""
+    INSTALL_COMMAND ""
+    LOG_DOWNLOAD ON)
+
+  set(DOXYGEN_STYLE_CONFIG "\
+GENERATE_TREEVIEW = YES
+DISABLE_INDEX = NO
+FULL_SIDEBAR = NO
+HTML_EXTRA_STYLESHEET = ${CMAKE_CURRENT_BINARY_DIR}/src/doxygen-awesome-css/doxygen-awesome.css
+HTML_COLORSTYLE = LIGHT\
+")
+endif()
+
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/GenerateDocs.cmake.in"
   "${CMAKE_CURRENT_BINARY_DIR}/cmake/GenerateDocs.cmake"
   @ONLY)

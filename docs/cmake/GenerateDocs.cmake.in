@@ -1,8 +1,9 @@
 ## Generate documentation at build time using Doxygen.
 
-set(DOXYGEN_PROJECT_NAME "@PROJECT_NAME@")
 set(DOXYGEN_MAINPAGE "@DOXYGEN_MAINPAGE@")
+set(DOXYGEN_PROJECT_NAME "@PROJECT_NAME@")
 set(DOXYGEN_STRIP_FROM_INC_PATH "@DOXYGEN_STRIP_FROM_INC_PATH@")
+set(DOXYGEN_STYLE_CONFIG "@DOXYGEN_STYLE_CONFIG@")
 
 macro(run_doxygen files output_dir)
   file(MAKE_DIRECTORY "${output_dir}")
