@@ -72,32 +72,32 @@ endif()
 string(REPLACE ";" " " DOXYGEN_STRIP_FROM_INC_PATH "${DOXYGEN_PATH_LIST}")
 
 if(IsoPunk_ENABLE_STYLED_DOCS)
-  include(ExternalProject)
+  include(FetchContent)
 
-  ExternalProject_Add(doxygen-awesome-css
-    PREFIX "${CMAKE_CURRENT_BINARY_DIR}"
+  FetchContent_Declare(doxygen-awesome-css
     GIT_REPOSITORY "https://github.com/jothepro/doxygen-awesome-css.git"
-    GIT_TAG v2.2.0
-    GIT_PROGRESS ON
-    TIMEOUT 10
-    CONFIGURE_COMMAND ""
-    BUILD_COMMAND ""
-    INSTALL_COMMAND ""
-    LOG_DOWNLOAD ON)
+    GIT_TAG a7f7891706c656903326f79baf74beb2b711688d # release v2.2.0
+    )
 
-  set(DOXYGEN_STYLESHEET
-    "${CMAKE_CURRENT_BINARY_DIR}/src/doxygen-awesome-css/doxygen-awesome.css")
+  FetchContent_MakeAvailable(doxygen-awesome-css)
 
-  if(EXISTS "${DOXYGEN_STYLESHEET}")
-    set(DOXYGEN_STYLE_CONFIG "\
+  if(doxygen-awesome-css_POPULATED)
+    set(DOXYGEN_STYLESHEET
+      "${doxygen-awesome-css_SOURCE_DIR}/doxygen-awesome.css")
+
+    if(EXISTS "${DOXYGEN_STYLESHEET}")
+      set(DOXYGEN_STYLE_CONFIG "\
 GENERATE_TREEVIEW = YES
 DISABLE_INDEX = NO
 FULL_SIDEBAR = NO
-HTML_EXTRA_STYLESHEET = ${CMAKE_CURRENT_BINARY_DIR}/src/doxygen-awesome-css/doxygen-awesome.css
+HTML_EXTRA_STYLESHEET = ${DOXYGEN_STYLESHEET}
 HTML_COLORSTYLE = LIGHT\
 ")
+    else()
+     message("Failed to find Doxygen stylesheet. Using default styles")
+    endif()
   else()
-    message("Failed to retrieve Doxygen stylesheet. Using default styles")
+    message("Failed to retrieve Doxygen stylesheet repository. Using default styles")
   endif()
 endif()
 
