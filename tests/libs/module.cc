@@ -1,6 +1,6 @@
 // Sets up the library unit tests module using Boost.
 //
-// This file is part of the unit tests for the IsoPunk Engine.
+// This file is part of the ipkengine unit tests.
 //
 // Copyright (c) 2023 Natalie Wiggins <islifepeachy@outlook.com>
 //

@@ -1,4 +1,4 @@
-// This header is part of the IsoPunk Engine API.
+// This header is part of the ipkengine API.
 //
 // Copyright (c) 2023 Natalie Wiggins <islifepeachy@outlook.com>
 //

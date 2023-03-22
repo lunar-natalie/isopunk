@@ -1,6 +1,7 @@
 {
     "cSpell.enabled": true,
     "files.associations": {
-        "*.in": "plaintext"
+        "*.in": "plaintext",
+        "cstdint": "cpp"
     }
 }

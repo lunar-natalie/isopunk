@@ -1,6 +1,6 @@
 // Core engine runtime methods.
 //
-// This file is part of the IsoPunk Engine.
+// This file is part of the ipkengine library.
 //
 // Copyright (c) 2023 Natalie Wiggins <islifepeachy@outlook.com>
 //
