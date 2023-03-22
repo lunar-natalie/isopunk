@@ -20,7 +20,8 @@
   <br>
   <b>IsoPunk</b><br>
   <br>
-  <a href="https://lunar-natalie.github.io/isopunk">Docs</a><br>
+  <a href="https://lunar-natalie.github.io/isopunk">Docs</a> |
+    <a href="https://github.com/lunar-natalie/isopunk">GitHub</a><br>
   <br>
   <i>// Under Construction //</i><br>
   <br>
