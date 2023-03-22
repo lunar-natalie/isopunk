@@ -1,8 +1,10 @@
 # Continuous integration to build and test all project components.
 name: CI
+
 on:
   # Any branch pushed to
   push:
+
 jobs:
   Build:
     runs-on: ubuntu-latest
