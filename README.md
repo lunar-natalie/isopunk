@@ -27,25 +27,6 @@
   <br>
 </p>
 
-**Contents**
-* [Supported platforms](#supported-platforms)
-* [Dependencies](#dependencies)
-  * [Runtime environment](#runtime-environment)
-  * [Development environment](#development-environment)
-* [Development](#development)
-  * [Using Visual Studio Code](#using-visual-studio-code)
-  * [Standalone (using POSIX `sh` or compatible)](#standalone-using-posix-sh-or-compatible)
-* [`ipkengine` and documentation](#ipkengine-and-documentation)
-* [Project structure](#project-structure)
-  * [Source directories](#source-directories)
-* [Source files](#source-files)
-  * [Filenames](#filenames)
-  * [File comments](#file-comments)
-  * [Documentation comments](#documentation-comments)
-  * [Code style](#code-style)
-  * [File formatting](#file-formatting)
-* [License](#license)
-
 # Supported platforms
 
 * Linux
@@ -106,7 +87,7 @@ The provided commands can be run from the Command Palette (default shortcut:
 **Run tests**
 * `CMake: Run Tests`
 
-## Standalone (using POSIX `sh` or compatible)
+## Standalone (using POSIX sh or compatible)
 
 **Configure**
 * Debug build type
@@ -130,7 +111,7 @@ cmake --build build
 build/src/game/isopunk
 ```
 
-# `ipkengine` and documentation
+# ipkengine and documentation
 
 The IsoPunk game engine, `ipkengine`, is exported as a library using CMake and
 can be used to build applications externally. See the [documentation][www-docs]
