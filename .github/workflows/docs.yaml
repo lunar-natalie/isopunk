@@ -32,8 +32,11 @@ jobs:
       - name: Cache dependencies
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: libsdl2-dev libboost-all-dev libvulkan-dev libglm-dev cppcheck clang-format doxygen graphviz git
+          packages: libsdl2-dev libboost-all-dev libvulkan-dev libglm-dev cppcheck clang-format doxygen git
           version: 1.0
+
+      - name: Install additional dependencies
+        run: sudo apt-get install -y graphviz
 
       - name: Configure and build docs
         uses: threeal/cmake-action@latest

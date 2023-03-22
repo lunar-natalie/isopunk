@@ -16,6 +16,7 @@
         "endcond",
         "GLFW",
         "glfwm",
+        "graphviz",
         "headerfile",
         "ipkengine",
         "isopunk",
