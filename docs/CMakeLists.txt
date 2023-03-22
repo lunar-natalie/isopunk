@@ -78,10 +78,12 @@ if(IsoPunk_ENABLE_STYLED_DOCS)
     PREFIX "${CMAKE_CURRENT_BINARY_DIR}"
     GIT_REPOSITORY "https://github.com/jothepro/doxygen-awesome-css.git"
     GIT_TAG v2.2.0
+    GIT_PROGRESS ON
     TIMEOUT 10
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
-    INSTALL_COMMAND "")
+    INSTALL_COMMAND ""
+    LOG_DOWNLOAD ON)
 
   set(DOXYGEN_STYLESHEET
     "${CMAKE_CURRENT_BINARY_DIR}/src/doxygen-awesome-css/doxygen-awesome.css")
@@ -95,7 +97,7 @@ HTML_EXTRA_STYLESHEET = ${CMAKE_CURRENT_BINARY_DIR}/src/doxygen-awesome-css/doxy
 HTML_COLORSTYLE = LIGHT\
 ")
   else()
-    message("Failed to retrieve Doxygen stylesheet")
+    message("Failed to retrieve Doxygen stylesheet. Using default styles")
   endif()
 endif()
 
