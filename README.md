@@ -1,6 +1,7 @@
 <p align="center">
   <img src="https://github.com/lunar-natalie/isopunk/raw/main/docs/assets/banner.png"
     alt="IsoPunk" width="1000"><br>
+  <br>
   <img src="https://github.com/lunar-natalie/isopunk/raw/main/docs/assets/tools.png"
     alt="Tools" width="500"><br>
   <br>
