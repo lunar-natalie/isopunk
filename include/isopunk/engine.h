@@ -106,6 +106,11 @@ private:
     /// @brief Initializes the Vulkan API.
     void init_vk();
 
+    /// @brief Gets the available Vulkan instance extensions.
+    ///
+    /// @see Engine::extensions
+    void vk_get_instance_extensions();
+
     /// @brief Creates the Vulkan instance, using application info derived from
     /// the engine configuration.
     ///
@@ -113,7 +118,7 @@ private:
     /// Vulkan commands.
     ///
     /// @see Engine::vk_instance
-    void create_vk_instance();
+    void vk_create_instance();
 
     /// @brief Renders all objects within the main loop.
     void draw();
@@ -128,11 +133,11 @@ private:
     /// @brief Window height and width in pixels.
     vk::Extent2D window_extent;
 
-    /// @brief Number of enabled global Vulkan instance extensions.
-    unsigned int extension_count;
+    /// @brief Enabled global Vulkan instance extension names.
+    std::vector<const char*> extensions;
 
-    /// @brief Names of enabled global Vulkan instance extensions.
-    const char** extension_names;
+    /// @brief Enabled Vulkan validation layer names.
+    std::vector<const char*> layers;
 };
 
 } // namespace isopunk

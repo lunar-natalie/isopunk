@@ -8,6 +8,9 @@
 
 #include <isopunk/engine.h>
 
+#include <cstdint>
+#include <vector>
+
 #include <SDL2/SDL_vulkan.h>
 #include <vulkan/vulkan.hpp>
 
@@ -19,10 +22,21 @@ using namespace isopunk;
 void Engine::init_vk()
 {
     // TODO
-    create_vk_instance();
+    vk_get_instance_extensions();
+    vk_create_instance();
 }
 
-void Engine::create_vk_instance()
+void Engine::vk_get_instance_extensions()
+{
+    unsigned int extension_count;
+    sdl_assert(
+        SDL_Vulkan_GetInstanceExtensions(window, &extension_count, nullptr));
+    extensions = std::vector<const char*>(extension_count);
+    sdl_assert(SDL_Vulkan_GetInstanceExtensions(window, &extension_count,
+                                                extensions.data()));
+}
+
+void Engine::vk_create_instance()
 {
     vk::ApplicationInfo app_info{
         .pApplicationName = config.application_name.c_str(),
@@ -35,9 +49,12 @@ void Engine::create_vk_instance()
                                 config::VERSION_PATCH),
         .apiVersion = VK_API_VERSION_1_0};
 
-    sdl_assert(SDL_Vulkan_GetInstanceExtensions(window, &extension_count,
-                                                extension_names));
+    vk::InstanceCreateInfo create_info{
+        .pApplicationInfo = &app_info,
+        .enabledLayerCount = static_cast<uint32_t>(layers.size()),
+        .ppEnabledLayerNames = layers.data(),
+        .enabledExtensionCount = static_cast<uint32_t>(extensions.size()),
+        .ppEnabledExtensionNames = extensions.data()};
 
-    // TODO
-    // vk::InstanceCreateInfo create_info{.pApplicationInfo = &app_info};
+    vk_instance = vk::createInstance(create_info);
 }
