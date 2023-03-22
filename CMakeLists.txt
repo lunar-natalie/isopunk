@@ -30,6 +30,7 @@ option(IsoPunk_BUILD_DOCS_COMB "Combine component documentation into a single di
 option(IsoPunk_BUILD_DOCS_INCLUDE "Build include documentation" ON)
 option(IsoPunk_BUILD_DOCS_SRC "Build src documentation" OFF)
 option(IsoPunk_BUILD_GAME "Build the game" ON)
+option(IsoPunk_ENABLE_LIBS "Build libraries" ON)
 option(IsoPunk_ENABLE_TESTS "Enable unit tests" ${IsoPunk_BUILD_DEBUG})
 option(IsoPunk_INSTALL_LIBS "Install libraries" ON)
 

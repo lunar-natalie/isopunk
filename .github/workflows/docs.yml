@@ -29,8 +29,11 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v3
 
-      - name: Install dependencies
-        run: sudo apt-get install -y libsdl2-dev libboost-all-dev libvulkan-dev libglm-dev cppcheck clang-format doxygen
+      - name: Cache dependencies
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: libsdl2-dev libboost-all-dev libvulkan-dev libglm-dev cppcheck clang-format doxygen
+          version: 1.0
 
       - name: Configure and build docs
         uses: threeal/cmake-action@latest
