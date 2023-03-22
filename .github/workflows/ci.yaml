@@ -2,8 +2,11 @@
 name: CI
 
 on:
-  # Any branch pushed to
+  # Execute when any branch is pushed to
   push:
+
+  # Allows manual running of the action
+  workflow_dispatch:
 
 jobs:
   Build:
