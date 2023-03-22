@@ -30,11 +30,11 @@
 **Contents**
 * [Supported platforms](#supported-platforms)
 * [Dependencies](#dependencies)
-  * [Runtime](#runtime)
-  * [Development](#development)
-* [Development](#development-1)
-  * [Using VS Code](#using-vs-code)
-  * [Standalone](#standalone)
+  * [Runtime environment](#runtime-environment)
+  * [Development environment](#development-environment)
+* [Development](#development)
+  * [Using Visual Studio Code](#using-visual-studio-code)
+  * [Standalone (using POSIX `sh` or compatible)](#standalone-using-posix-sh-or-compatible)
 * [`ipkengine` and documentation](#ipkengine-and-documentation)
 * [Project structure](#project-structure)
   * [Source directories](#source-directories)
@@ -54,14 +54,14 @@
 
 # Dependencies
 
-## Runtime
+## Runtime environment
 
 * Vulkan 1.0 or newer implementation
 * Wayland or X11 (Linux)
 
 **TODO**: Package
 
-## Development
+## Development environment
 
 * C++20 toolchain
 * CMake 3.21 or newer
@@ -80,7 +80,7 @@
 
 # Development
 
-## Using VS Code
+## Using Visual Studio Code
 
 * Install the recommended workspace extensions when prompted, or run the
   `Extensions: Show Recommended Extensions` command and click the
@@ -106,7 +106,7 @@ The provided commands can be run from the Command Palette (default shortcut:
 **Run tests**
 * `CMake: Run Tests`
 
-## Standalone
+## Standalone (using POSIX `sh` or compatible)
 
 **Configure**
 * Debug build type
