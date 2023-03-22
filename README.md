@@ -7,10 +7,10 @@
   <br>
   <img src="https://img.shields.io/github/license/lunar-natalie/isopunk"
     alt="License">
-  <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/ci.yaml/badge.svg"
+  <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/ci.yaml/badge.svg?event=push"
     alt="CI">
-  <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/docs.yaml/badge.svg"
-    alt="Docs">
+  <img src="https://github.com/lunar-natalie/isopunk/actions/workflows/docs.yaml/badge.svg?event=push"
+    alt="Documentation">
     <br>
   <br>
   <b>IsoPunk</b><br>
