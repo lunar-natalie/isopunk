@@ -9,6 +9,7 @@
 #include <isopunk/engine.h>
 
 #include <cstdint>
+#include <stdexcept>
 #include <vector>
 
 #include <SDL2/SDL_vulkan.h>
@@ -56,5 +57,10 @@ void Engine::vk_create_instance()
         .enabledExtensionCount = static_cast<uint32_t>(extensions.size()),
         .ppEnabledExtensionNames = extensions.data()};
 
-    vk_instance = vk::createInstance(create_info);
+    try {
+        vk_instance = vk::createInstance(create_info);
+    }
+    catch (vk::SystemError& e) {
+        throw std::runtime_error(e.what());
+    }
 }

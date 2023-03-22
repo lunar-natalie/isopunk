@@ -2,6 +2,8 @@
     "cSpell.enabled": true,
     "files.associations": {
         "*.in": "plaintext",
-        "cstdint": "cpp"
+        "cstdint": "cpp",
+        "system_error": "cpp",
+        "stdexcept": "cpp"
     }
 }

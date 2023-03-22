@@ -63,6 +63,8 @@ public:
     ///
     /// This method should be implemented by the derived game class to
     /// initialize and start the engine runtime.
+    ///
+    /// @throw std::runtime_error if a fatal error occurs in the engine runtime.
     virtual void start() = 0;
 
     ////////////////////////////////////////////////////////////////////////////
@@ -72,6 +74,9 @@ public:
 protected:
     /// @brief Creates the program's main window and populates engine internals
     /// using the objects provided by the game implementation.
+    ///
+    /// @throw std::runtime_error if a fatal error occurs in the initialization
+    /// process.
     void init();
 
     /// @brief Starts the engine runtime, running the main window loop to
@@ -104,6 +109,9 @@ protected:
 
 private:
     /// @brief Initializes the Vulkan API.
+    ///
+    /// @throw std::runtime_error if a fatal error occurs in the initialization
+    /// process.
     void init_vk();
 
     /// @brief Gets the available Vulkan instance extensions.
@@ -118,6 +126,9 @@ private:
     /// Vulkan commands.
     ///
     /// @see Engine::vk_instance
+    ///
+    /// @throw std::runtime_error if a fatal error occurs in the initialization
+    /// process.
     void vk_create_instance();
 
     /// @brief Renders all objects within the main loop.
