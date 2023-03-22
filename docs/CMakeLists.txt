@@ -77,7 +77,7 @@ if(IsoPunk_ENABLE_STYLED_DOCS)
   FetchContent_Declare(doxygen-awesome-css
     GIT_REPOSITORY "https://github.com/jothepro/doxygen-awesome-css.git"
     GIT_TAG a7f7891706c656903326f79baf74beb2b711688d # release v2.2.0
-    )
+  )
 
   FetchContent_MakeAvailable(doxygen-awesome-css)
 
@@ -85,14 +85,33 @@ if(IsoPunk_ENABLE_STYLED_DOCS)
     set(DOXYGEN_STYLESHEET
       "${doxygen-awesome-css_SOURCE_DIR}/doxygen-awesome.css")
 
+    string(REPLACE "." ";" VERSION_COMPONENTS "${DOXYGEN_VERSION}")
+    list(LENGTH VERSION_COMPONENTS N_VERSION_COMPONENTS)
+    if(N_VERSION_COMPONENTS GREATER_EQUAL 3)
+      list(GET VERSION_COMPONENTS 0 MAJOR)
+      list(GET VERSION_COMPONENTS 1 MINOR)
+      list(GET VERSION_COMPONENTS 2 PATCH)
+      if(MAJOR GREATER_EQUAL 1 AND MINOR GREATER_EQUAL 9
+          AND PATCH GREATER_EQUAL 5)
+        set(DOXYGEN_NEW True)
+      endif()
+    else()
+      set(DOXYGEN_NEW False)
+    endif()
+
     if(EXISTS "${DOXYGEN_STYLESHEET}")
       set(DOXYGEN_STYLE_CONFIG "\
 GENERATE_TREEVIEW = YES
 DISABLE_INDEX = NO
+HTML_EXTRA_STYLESHEET = ${DOXYGEN_STYLESHEET}\
+")
+      if(DOXYGEN_NEW)
+        set(DOXYGEN_STYLE_CONFIG "\
+${DOXYGEN_STYLE_CONFIG}
 FULL_SIDEBAR = NO
-HTML_EXTRA_STYLESHEET = ${DOXYGEN_STYLESHEET}
 HTML_COLORSTYLE = LIGHT\
 ")
+      endif()
     else()
      message("Failed to find Doxygen stylesheet. Using default styles")
     endif()
