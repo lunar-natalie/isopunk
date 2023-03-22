@@ -15,7 +15,7 @@ jobs:
           execute_install_scripts: true
 
       - name: Checkout
-        uses: actions/checkout@v3.3.0
+        uses: actions/checkout@v3
 
       - name: Configure and build
         uses: threeal/cmake-action@latest
