@@ -40,7 +40,7 @@
 
 ## Runtime environment
 
-* Vulkan 1.0 or newer implementation
+* Vulkan 1.0.24 or newer implementation
 * Wayland or X11 (Linux)
 
 **TODO**: Package
@@ -52,7 +52,7 @@
 * Boost
 * SDL2
 * GLM
-* Vulkan 1.0 or newer headers, including `vulkan-hpp`
+* Vulkan 1.0.24 or newer SDK
 
 **Optional**
 * Doxygen

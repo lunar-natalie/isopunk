@@ -45,7 +45,7 @@ find_package(SDL2 REQUIRED)
 
 # Vulkan
 # Modern, high-performance, portable low level graphics API.
-find_package(Vulkan REQUIRED)
+find_package(Vulkan 1.0.24 REQUIRED)
 
 # Boost
 # Portable multi-purpose C++ source libraries.
