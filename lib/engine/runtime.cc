@@ -1,10 +1,10 @@
-// Core engine runtime methods.
-//
-// This file is part of the ipkengine library.
-//
+// ipkengine
 // Copyright (c) 2023 Natalie Wiggins <islifepeachy@outlook.com>
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
+
+/// @file runtime.cc
+/// @brief Implementation of core engine runtime methods.
 
 #include <isopunk/engine.h>
 

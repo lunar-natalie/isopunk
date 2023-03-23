@@ -1,8 +1,10 @@
-// This header is part of the ipkengine API.
-//
+// ipkengine
 // Copyright (c) 2023 Natalie Wiggins <islifepeachy@outlook.com>
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
+
+/// @file engine.h
+/// @brief Main include file for the IsoPunk Engine class.
 
 #ifndef ISOPUNK_ENGINE_H
 #define ISOPUNK_ENGINE_H

@@ -1,8 +1,10 @@
-// This file is part of the ipkengine library.
-//
+// ipkengine
 // Copyright (c) 2023 Natalie Wiggins <islifepeachy@outlook.com>
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
+
+/// @file config.cc
+/// @brief Engine configuration definitions.
 
 #include <isopunk/engine/config.h>
 

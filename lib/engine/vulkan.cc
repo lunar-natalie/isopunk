@@ -1,10 +1,10 @@
-// Vulkan management.
-//
-// This file is part of the ipkengine library.
-//
+// ipkengine
 // Copyright (c) 2023 Natalie Wiggins <islifepeachy@outlook.com>
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
+
+/// @file vulkan.cc
+/// @brief Implementation of Vulkan init, deinit and management utils.
 
 #include <isopunk/engine.h>
 

@@ -152,15 +152,25 @@ written in Pascal case.
 ## File comments
 
 **C++**
-* Files should be prefixed with a short description followed by an empty comment
-  before the following block, unless the file declares or implements exactly one
-  documented abstraction, in which case the description is not required.
+* Documented source files should start with a comment in the following format:
 ```c++
-// This (header/file) is part of COMPONENT.
+// PROJECT COMPONENT
+// Copyright (c) 2023 NAME <EMAIL>
 //
-// Copyright (c) YEAR AUTHOR <EMAIL>
+// SPDX-License-Identifier: LICENSE-IDENTIFIER
+
+/// @file FILENAME
+/// @brief BRIEF DESCRIPTION
+```
+* Non-documented source files should start with a comment in the following
+  format:
+```c++
+// PROJECT COMPONENT
+// Copyright (c) 2023 NAME <EMAIL>
 //
-// SPDX-License-Identifier: IDENTIFIER
+// SPDX-License-Identifier: LICENSE-IDENTIFIER
+//
+// BRIEF DESCRIPTION
 ```
 
 **CMake**

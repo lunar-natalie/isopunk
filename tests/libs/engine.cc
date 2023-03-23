@@ -1,8 +1,9 @@
-// This file is part of the ipkengine unit tests.
-//
+// ipkengine
 // Copyright (c) 2023 Natalie Wiggins <islifepeachy@outlook.com>
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
+//
+// Engine unit test.
 
 #include <boost/test/unit_test.hpp>
 

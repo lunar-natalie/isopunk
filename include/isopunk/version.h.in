@@ -1,8 +1,10 @@
-// This header is part of the ipkengine API.
-//
+// IsoPunk
 // Copyright (c) 2023 Natalie Wiggins <islifepeachy@outlook.com>
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
+
+/// @file version.h
+/// @brief CMake-configured version header.
 
 #ifndef ISOPUNK_VERSION_H
 #define ISOPUNK_VERSION_H

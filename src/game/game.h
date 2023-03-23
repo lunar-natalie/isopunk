@@ -1,8 +1,10 @@
-// This file is part of IsoPunk.
-//
+// IsoPunk
 // Copyright (c) 2023 Natalie Wiggins <islifepeachy@outlook.com>
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
+
+/// @file game.h
+/// @brief Game class header.
 
 #ifndef GAME_H
 #define GAME_H

@@ -1,10 +1,10 @@
-// Program entrypoint.
-//
-// This file is part of IsoPunk.
-//
+// IsoPunk
 // Copyright (c) 2023 Natalie Wiggins <islifepeachy@outlook.com>
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
+
+/// @file main.cc
+/// @brief Program entrypoint.
 
 #include <cstdlib>
 

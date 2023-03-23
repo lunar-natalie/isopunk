@@ -1,10 +1,10 @@
-// Game constructor and destructor.
-//
-// This file is part of IsoPunk.
-//
+// IsoPunk
 // Copyright (c) 2023 Natalie Wiggins <islifepeachy@outlook.com>
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
+
+/// @file game.cc
+/// @brief Game constructor and destructor implementation.
 
 #include "game.h"
 
