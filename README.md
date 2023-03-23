@@ -153,7 +153,7 @@ written in Pascal case.
 
 **C++**
 * Documented source files should start with a comment in the following format:
-```c++
+```
 // PROJECT COMPONENT
 // Copyright (c) 2023 NAME <EMAIL>
 //
@@ -164,7 +164,7 @@ written in Pascal case.
 ```
 * Non-documented source files should start with a comment in the following
   format:
-```c++
+```
 // PROJECT COMPONENT
 // Copyright (c) 2023 NAME <EMAIL>
 //
