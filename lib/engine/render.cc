@@ -3,7 +3,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-/// @file renderer.cc
+/// @file render.cc
 /// @brief Graphical rendering routines.
 
 #include <isopunk/engine.h>

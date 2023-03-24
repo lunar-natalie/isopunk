@@ -3,9 +3,13 @@
 add_library(Engine
   config.cc
   engine.cc
-  renderer.cc
-  runtime.cc
-  vulkan.cc
+  init.cc
+  render.cc
+  run.cc
+  vulkan/device.cc
+  vulkan/init.cc
+  vulkan/instance.cc
+  vulkan/surface.cc
 )
 
 set_target_properties(Engine

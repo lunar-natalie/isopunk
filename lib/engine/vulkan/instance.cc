@@ -3,8 +3,8 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-/// @file vulkan.cc
-/// @brief Implementation of Vulkan init, deinit and management utils.
+/// @file instance.cc
+/// @brief Vulkan instance creation.
 
 #include <isopunk/engine.h>
 
@@ -15,18 +15,11 @@
 #include <SDL2/SDL_vulkan.h>
 #include <vulkan/vulkan.hpp>
 
+#include <isopunk/engine/config.h>
 #include <isopunk/engine/utils.h>
 #include <isopunk/version.h>
 
 using namespace isopunk;
-
-void Engine::vk_init()
-{
-    // TODO
-    vk_get_instance_extensions();
-    vk_create_instance();
-    vk_create_surface();
-}
 
 void Engine::vk_get_instance_extensions()
 {
@@ -64,16 +57,4 @@ void Engine::vk_create_instance()
     catch (vk::SystemError& e) {
         throw std::runtime_error(e.what());
     }
-}
-
-void Engine::vk_create_surface()
-{
-    sdl_assert(
-        SDL_Vulkan_CreateSurface(window, static_cast<VkInstance>(vk_instance),
-                                 reinterpret_cast<VkSurfaceKHR*>(&surface)));
-}
-
-void Engine::vk_deinit() const noexcept
-{
-    vk_instance.destroy();
 }

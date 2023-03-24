@@ -139,6 +139,8 @@ private:
     /// process.
     void vk_create_surface();
 
+    void vk_select_physical_device();
+
     /// @brief Deinitializes the Vulkan API.
     void vk_deinit() const noexcept;
 
