@@ -25,6 +25,7 @@ void Engine::vk_init()
     // TODO
     vk_get_instance_extensions();
     vk_create_instance();
+    vk_create_surface();
 }
 
 void Engine::vk_get_instance_extensions()
@@ -63,6 +64,13 @@ void Engine::vk_create_instance()
     catch (vk::SystemError& e) {
         throw std::runtime_error(e.what());
     }
+}
+
+void Engine::vk_create_surface()
+{
+    sdl_assert(
+        SDL_Vulkan_CreateSurface(window, static_cast<VkInstance>(vk_instance),
+                                 reinterpret_cast<VkSurfaceKHR*>(&surface)));
 }
 
 void Engine::vk_deinit() const noexcept

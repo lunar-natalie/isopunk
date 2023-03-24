@@ -133,6 +133,12 @@ private:
     /// process.
     void vk_create_instance();
 
+    /// @brief Creates the Vulkan window surface.
+    ///
+    /// @throw std::runtime_error if a fatal error occurs in the initialization
+    /// process.
+    void vk_create_surface();
+
     /// @brief Deinitializes the Vulkan API.
     void vk_deinit() const noexcept;
 
@@ -148,6 +154,9 @@ private:
 
     /// @brief Window height and width in pixels.
     vk::Extent2D window_extent;
+
+    /// @brief Main rendering surface, attached to the main window.
+    vk::SurfaceKHR surface;
 
     /// @brief Enabled global Vulkan instance extension names.
     std::vector<const char*> extensions;
