@@ -8,9 +8,15 @@
 
 #include <isopunk/engine.h>
 
+#include <vulkan/vulkan.hpp>
+
+#include <isopunk/engine/utils.h>
+
 using namespace isopunk;
 
-void Engine::vk_select_physical_device()
+void Engine::vk_get_physical_devices()
 {
-    // TODO
+    vk_physical_devices = vk_instance.enumeratePhysicalDevices();
+    runtime_assert(vk_physical_devices.size() > 0, "No physical devices");
+    vk_physical_device = vk_physical_devices.front();
 }

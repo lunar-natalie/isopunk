@@ -15,6 +15,13 @@
 
 namespace isopunk {
 
+inline void runtime_assert(bool condition, const char* message)
+{
+    if (!condition) {
+        throw std::runtime_error(message);
+    }
+}
+
 /// @brief Throws an `std::runtime_error` with the last SDL error message if the
 /// condition is `false`.
 /// @param condition Condition to assert as `true`.

@@ -28,11 +28,11 @@ void Engine::vk_get_instance_extensions()
     sdl_assert(
         SDL_Vulkan_GetInstanceExtensions(window, &extension_count, nullptr));
 
-    extensions = std::vector<const char*>(extension_count);
+    vk_extensions = std::vector<const char*>(extension_count);
 
     // Get names.
     sdl_assert(SDL_Vulkan_GetInstanceExtensions(window, &extension_count,
-                                                extensions.data()));
+                                                vk_extensions.data()));
 }
 
 void Engine::vk_create_instance()
@@ -46,10 +46,10 @@ void Engine::vk_create_instance()
 
     vk::InstanceCreateInfo create_info{
         .pApplicationInfo = &app_info,
-        .enabledLayerCount = static_cast<uint32_t>(layers.size()),
-        .ppEnabledLayerNames = layers.data(),
-        .enabledExtensionCount = static_cast<uint32_t>(extensions.size()),
-        .ppEnabledExtensionNames = extensions.data()};
+        .enabledLayerCount = static_cast<uint32_t>(vk_layers.size()),
+        .ppEnabledLayerNames = vk_layers.data(),
+        .enabledExtensionCount = static_cast<uint32_t>(vk_extensions.size()),
+        .ppEnabledExtensionNames = vk_extensions.data()};
 
     try {
         vk_instance = vk::createInstance(create_info);

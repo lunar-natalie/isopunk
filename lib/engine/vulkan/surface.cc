@@ -19,5 +19,5 @@ void Engine::vk_create_surface()
 {
     sdl_assert(
         SDL_Vulkan_CreateSurface(window, static_cast<VkInstance>(vk_instance),
-                                 reinterpret_cast<VkSurfaceKHR*>(&surface)));
+                                 reinterpret_cast<VkSurfaceKHR*>(&vk_surface)));
 }

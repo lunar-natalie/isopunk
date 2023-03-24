@@ -139,7 +139,12 @@ private:
     /// process.
     void vk_create_surface();
 
-    void vk_select_physical_device();
+    /// @brief Gets available Vulkan physical devices for rendering.
+    ///
+    /// @throw std::runtime_error if no devices are found.
+    /// @see Engine::vk_physical_devices
+    /// @see Engine::vk_physical_device
+    void vk_get_physical_devices();
 
     /// @brief Deinitializes the Vulkan API.
     void vk_deinit() const noexcept;
@@ -158,13 +163,19 @@ private:
     vk::Extent2D window_extent;
 
     /// @brief Main rendering surface, attached to the main window.
-    vk::SurfaceKHR surface;
+    vk::SurfaceKHR vk_surface;
+
+    /// @brief Vulkan physical rendering devices.
+    std::vector<vk::PhysicalDevice> vk_physical_devices;
+
+    /// @brief Primary Vulkan physical rendering device.
+    vk::PhysicalDevice vk_physical_device;
 
     /// @brief Enabled global Vulkan instance extension names.
-    std::vector<const char*> extensions;
+    std::vector<const char*> vk_extensions;
 
     /// @brief Enabled Vulkan validation layer names.
-    std::vector<const char*> layers;
+    std::vector<const char*> vk_layers;
 };
 
 } // namespace isopunk
