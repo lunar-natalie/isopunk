@@ -9,6 +9,7 @@ add_library(Engine
   vulkan/device.cc
   vulkan/init.cc
   vulkan/instance.cc
+  vulkan/physical_device.cc
   vulkan/surface.cc
 )
 

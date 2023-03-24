@@ -17,6 +17,7 @@ void Engine::vk_init()
     vk_create_instance();
     vk_create_surface();
     vk_get_physical_devices();
+    vk_create_device();
 }
 
 void Engine::vk_deinit() const noexcept

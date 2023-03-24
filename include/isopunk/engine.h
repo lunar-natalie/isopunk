@@ -146,6 +146,12 @@ private:
     /// @see Engine::vk_physical_device
     void vk_get_physical_devices();
 
+    /// @brief Creates the Vulkan rendering device.
+    ///
+    /// @throw std::runtime_error if no devices are found.
+    /// @see Engine::vk_device
+    void vk_create_device();
+
     /// @brief Deinitializes the Vulkan API.
     void vk_deinit() const noexcept;
 
@@ -170,6 +176,9 @@ private:
 
     /// @brief Primary Vulkan physical device.
     vk::PhysicalDevice vk_physical_device;
+
+    /// @brief Vulkan rendering device.
+    vk::Device vk_device;
 
     /// @brief Enabled global Vulkan instance extension names.
     std::vector<const char*> vk_extensions;

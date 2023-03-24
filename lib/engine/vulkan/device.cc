@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file device.cc
-/// @brief Vulkan device management.
+/// @brief Vulkan rendering device setup.
 
 #include <isopunk/engine.h>
 
@@ -14,9 +14,7 @@
 
 using namespace isopunk;
 
-void Engine::vk_get_physical_devices()
+void Engine::vk_create_device()
 {
-    vk_physical_devices = vk_instance.enumeratePhysicalDevices();
-    runtime_assert(vk_physical_devices.size() > 0, "No physical devices");
-    vk_physical_device = vk_physical_devices.front();
+    // TODO
 }
