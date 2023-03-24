@@ -139,7 +139,7 @@ private:
     /// process.
     void vk_create_surface();
 
-    /// @brief Gets available Vulkan physical devices for rendering.
+    /// @brief Gets available Vulkan physical devices.
     ///
     /// @throw std::runtime_error if no devices are found.
     /// @see Engine::vk_physical_devices
@@ -165,10 +165,10 @@ private:
     /// @brief Main rendering surface, attached to the main window.
     vk::SurfaceKHR vk_surface;
 
-    /// @brief Vulkan physical rendering devices.
+    /// @brief Vulkan physical devices.
     std::vector<vk::PhysicalDevice> vk_physical_devices;
 
-    /// @brief Primary Vulkan physical rendering device.
+    /// @brief Primary Vulkan physical device.
     vk::PhysicalDevice vk_physical_device;
 
     /// @brief Enabled global Vulkan instance extension names.
