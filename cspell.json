@@ -25,6 +25,7 @@
         "pkgs",
         "POSIX",
         "Stroustrup",
+        "SWAPCHAIN",
         "threeal",
         "vkfw",
         "Vulkan",

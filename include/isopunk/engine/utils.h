@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file utils.h
-/// @brief Engine utilities.
+/// @brief Miscellaneous engine utility functions.
 
 #ifndef ISOPUNK_ENGINE_UTILS_H
 #define ISOPUNK_ENGINE_UTILS_H

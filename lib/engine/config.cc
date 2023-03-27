@@ -6,14 +6,15 @@
 /// @file config.cc
 /// @brief Engine configuration definitions.
 
+#include <isopunk/engine.h>
+
 #include <isopunk/engine/config.h>
 
 #include <isopunk/version.h>
 
 using namespace isopunk;
 
-const EngineConfig EngineConfig::default_config{.application_name = "IsoPunk",
-                                                .application_version =
-                                                    config::ENGINE_VERSION,
-                                                .window_width = 800,
-                                                .window_height = 600};
+const EngineConfig Engine::default_config{.application_name = "IsoPunk",
+                                          .application_version = ENGINE_VERSION,
+                                          .window_width = 800,
+                                          .window_height = 600};

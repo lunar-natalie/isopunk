@@ -12,7 +12,7 @@
 #include <cstdint>
 #include <string>
 
-#include <vulkan/vulkan.hpp>
+#include <isopunk/engine/version.h>
 
 namespace isopunk {
 
@@ -26,27 +26,6 @@ struct EngineConfig {
     /// used as the title of the main window.
     std::string application_name;
 
-    /// @brief Software version.
-    struct Version {
-        /// @brief Major version number.
-        uint32_t major;
-
-        /// @brief Minor version number.
-        uint32_t minor;
-
-        /// @brief Patch version number.
-        uint32_t patch;
-
-        /// @brief Generates a Vulkan API version from the version numbers in
-        /// the object.
-        ///
-        /// @return Vulkan API version value.
-        uint32_t vk_make_api_version() const
-        {
-            return VK_MAKE_API_VERSION(0, major, minor, patch);
-        }
-    };
-
     /// @brief Application version.
     Version application_version;
 
@@ -55,9 +34,6 @@ struct EngineConfig {
 
     /// @brief Initial height of the main window.
     uint32_t window_height;
-
-    /// @brief Default engine configuration.
-    static const EngineConfig default_config;
 };
 
 } // namespace isopunk

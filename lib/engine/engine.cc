@@ -13,7 +13,6 @@
 using namespace isopunk;
 
 Engine::Engine(EngineConfig config)
-    : config{config},
-      window_extent{config.window_width, config.window_height}
+    : config{config}
 {
 }

@@ -17,6 +17,7 @@ target_sources(Headers PUBLIC FILE_SET HEADERS
     isopunk/engine.h
     isopunk/engine/config.h
     isopunk/engine/utils.h
+    isopunk/engine/window.h
 )
 
 set_target_properties(Headers

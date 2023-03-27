@@ -11,6 +11,7 @@ add_library(Engine
   vulkan/instance.cc
   vulkan/physical_device.cc
   vulkan/surface.cc
+  window.cc
 )
 
 set_target_properties(Engine

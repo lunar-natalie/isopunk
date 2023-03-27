@@ -9,12 +9,14 @@
 #ifndef ISOPUNK_ENGINE_H
 #define ISOPUNK_ENGINE_H
 
+#include <cstdint>
 #include <vector>
 
 #include <SDL2/SDL.h>
 #include <vulkan/vulkan.hpp>
 
 #include <isopunk/engine/config.h>
+#include <isopunk/engine/window.h>
 
 namespace isopunk {
 
@@ -50,7 +52,7 @@ protected:
     /// game class.
     ///
     /// @param config Configuration properties.
-    Engine(EngineConfig config = EngineConfig::default_config);
+    Engine(EngineConfig config = default_config);
 
 public:
     /// @brief Destructs the engine object.
@@ -68,10 +70,6 @@ public:
     ///
     /// @throw std::runtime_error if a fatal error occurs in the engine runtime.
     virtual void start() = 0;
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Runtime methods /////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////
 
 protected:
     /// @brief Creates the program's main window and populates engine internals
@@ -92,12 +90,11 @@ protected:
     /// instance goes out of scope or the program itself is terminated.
     void terminate() const noexcept;
 
-    ////////////////////////////////////////////////////////////////////////////
-    // Protected properties ////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////
-
     /// @brief Configuration for setting up the engine.
     EngineConfig config;
+
+    /// @brief Default init configuration.
+    static const EngineConfig default_config;
 
     /// @brief Vulkan instance.
     ///
@@ -105,16 +102,18 @@ protected:
     /// Vulkan API.
     vk::Instance vk_instance;
 
-    ////////////////////////////////////////////////////////////////////////////
-    // Internal methods ////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////
-
 private:
+    /// @brief Renders all objects within the main loop.
+    void draw();
+
     /// @brief Initializes the Vulkan API.
     ///
     /// @throw std::runtime_error if a fatal error occurs in the initialization
     /// process.
     void vk_init();
+
+    /// @brief Deinitializes the Vulkan API.
+    void vk_deinit() const noexcept;
 
     /// @brief Gets the available Vulkan instance extensions.
     ///
@@ -127,7 +126,7 @@ private:
     /// This method must be called before accessing the instance for executing
     /// Vulkan commands.
     ///
-    /// @see Engine::vk_instance
+    /// @see Engine::instance
     ///
     /// @throw std::runtime_error if a fatal error occurs in the initialization
     /// process.
@@ -142,31 +141,18 @@ private:
     /// @brief Gets available Vulkan physical devices.
     ///
     /// @throw std::runtime_error if no devices are found.
-    /// @see Engine::vk_physical_devices
-    /// @see Engine::vk_physical_device
+    /// @see Engine::physical_devices
+    /// @see Engine::physical_device
     void vk_get_physical_devices();
 
     /// @brief Creates the Vulkan rendering device.
     ///
     /// @throw std::runtime_error if no devices are found.
-    /// @see Engine::vk_device
+    /// @see Engine::device
     void vk_create_device();
 
-    /// @brief Deinitializes the Vulkan API.
-    void vk_deinit() const noexcept;
-
-    /// @brief Renders all objects within the main loop.
-    void draw();
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Internal properties /////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////
-
-    /// @brief Main graphical window used as the primary rendering surface.
-    SDL_Window* window;
-
-    /// @brief Window height and width in pixels.
-    vk::Extent2D window_extent;
+    /// @brief Main graphical window.
+    Window* window;
 
     /// @brief Main rendering surface, attached to the main window.
     vk::SurfaceKHR vk_surface;
@@ -185,6 +171,18 @@ private:
 
     /// @brief Enabled Vulkan validation layer names.
     std::vector<const char*> vk_layers;
+
+    /// @brief Holds the index of each available Vulkan queue family.
+    struct QueueFamilyIndices {
+        uint32_t graphics;
+        uint32_t present;
+    } vk_queue_family_indices;
+
+    /// @brief Vulkan queue objects for each available queue family.
+    struct Queues {
+        vk::Queue graphics;
+        vk::Queue present;
+    } vk_queues;
 };
 
 } // namespace isopunk

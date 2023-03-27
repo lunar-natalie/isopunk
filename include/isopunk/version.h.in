@@ -4,20 +4,22 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file version.h
-/// @brief CMake-configured version header.
+/// @brief CMake-configured version and engine info header.
 
 #ifndef ISOPUNK_VERSION_H
 #define ISOPUNK_VERSION_H
 
-#include <isopunk/engine/config.h>
+#include <isopunk/engine/version.h>
 
-namespace isopunk::config {
+namespace isopunk {
 
-constexpr const EngineConfig::Version ENGINE_VERSION = {
+constexpr const char* ENGINE_NAME = "ipkengine";
+
+constexpr const Version ENGINE_VERSION = {
     .major = @PROJECT_VERSION_MAJOR@,
     .minor = @PROJECT_VERSION_MINOR@,
     .patch = @PROJECT_VERSION_PATCH@};
 
-} // namespace isopunk::config
+} // namespace isopunk
 
 #endif // ISOPUNK_VERSION_H
