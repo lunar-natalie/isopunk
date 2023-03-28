@@ -126,10 +126,10 @@ private:
     /// This method must be called before accessing the instance for executing
     /// Vulkan commands.
     ///
-    /// @see Engine::instance
-    ///
     /// @throw std::runtime_error if a fatal error occurs in the initialization
     /// process.
+    ///
+    /// @see Engine::instance
     void vk_create_instance();
 
     /// @brief Creates the Vulkan window surface.
@@ -141,6 +141,7 @@ private:
     /// @brief Gets available Vulkan physical devices.
     ///
     /// @throw std::runtime_error if no devices are found.
+    ///
     /// @see Engine::physical_devices
     /// @see Engine::physical_device
     void vk_get_physical_devices();
@@ -148,6 +149,7 @@ private:
     /// @brief Creates the Vulkan rendering device.
     ///
     /// @throw std::runtime_error if no devices are found.
+    ///
     /// @see Engine::device
     void vk_create_device();
 
