@@ -45,9 +45,10 @@ void Engine::vk_create_instance()
 
     vk::InstanceCreateInfo create_info{
         .pApplicationInfo = &app_info,
-        .enabledLayerCount = static_cast<uint32_t>(vk_layers.size()),
+        .enabledLayerCount = static_cast<std::uint32_t>(vk_layers.size()),
         .ppEnabledLayerNames = vk_layers.data(),
-        .enabledExtensionCount = static_cast<uint32_t>(vk_extensions.size()),
+        .enabledExtensionCount =
+            static_cast<std::uint32_t>(vk_extensions.size()),
         .ppEnabledExtensionNames = vk_extensions.data()};
 
     try {

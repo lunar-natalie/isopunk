@@ -30,10 +30,10 @@ struct EngineConfig {
     Version application_version;
 
     /// @brief Initial width of the main window.
-    uint32_t window_width;
+    std::uint32_t window_width;
 
     /// @brief Initial height of the main window.
-    uint32_t window_height;
+    std::uint32_t window_height;
 };
 
 } // namespace isopunk

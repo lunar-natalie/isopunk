@@ -18,19 +18,19 @@ namespace isopunk {
 /// @brief Software version information.
 struct Version {
     /// @brief Major version number.
-    uint32_t major;
+    std::uint32_t major;
 
     /// @brief Minor version number.
-    uint32_t minor;
+    std::uint32_t minor;
 
     /// @brief Patch version number.
-    uint32_t patch;
+    std::uint32_t patch;
 
     /// @brief Generates a Vulkan API version from the version numbers in
     /// the object.
     ///
     /// @return Vulkan API version value.
-    uint32_t vk_make_api_version() const
+    std::uint32_t vk_make_api_version() const
     {
         return VK_MAKE_API_VERSION(0, major, minor, patch);
     }

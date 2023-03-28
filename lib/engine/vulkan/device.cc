@@ -23,7 +23,7 @@ void Engine::vk_create_device()
     const float queue_priorities[] = {1.0f};
 
     std::vector<vk::DeviceQueueCreateInfo> queue_create_infos;
-    std::set<uint32_t> unique_queue_families = {
+    std::set<std::uint32_t> unique_queue_families = {
         vk_queue_family_indices.graphics, vk_queue_family_indices.present};
 
     auto queue_priority = queue_priorities[0];
@@ -46,12 +46,12 @@ void Engine::vk_create_device()
 
     vk::DeviceCreateInfo create_info = {
         .queueCreateInfoCount =
-            static_cast<uint32_t>(queue_create_infos.size()),
+            static_cast<std::uint32_t>(queue_create_infos.size()),
         .pQueueCreateInfos = queue_create_infos.data(),
-        .enabledLayerCount = static_cast<uint32_t>(vk_layers.size()),
+        .enabledLayerCount = static_cast<std::uint32_t>(vk_layers.size()),
         .ppEnabledLayerNames = vk_layers.data(),
         .enabledExtensionCount =
-            static_cast<uint32_t>(device_extensions.size()),
+            static_cast<std::uint32_t>(device_extensions.size()),
         .ppEnabledExtensionNames = device_extensions.data(),
         .pEnabledFeatures = &device_features};
 

@@ -8,19 +8,17 @@
 
 #include <isopunk/engine/window.h>
 
-#include <cstddef>
 #include <cstdint>
 #include <string>
 
 #include <SDL2/SDL.h>
-#include <vulkan/vulkan.hpp>
 
 #include <isopunk/engine/utils.h>
 
 using namespace isopunk;
 
-Window::Window(const std::string& title, uint32_t width, uint32_t height,
-               SDL_WindowFlags flags)
+Window::Window(const std::string& title, std::uint32_t width,
+               std::uint32_t height, Uint32 flags)
     : extent{width, height}
 {
     data = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED,

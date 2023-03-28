@@ -176,8 +176,8 @@ private:
 
     /// @brief Holds the index of each available Vulkan queue family.
     struct QueueFamilyIndices {
-        uint32_t graphics;
-        uint32_t present;
+        std::uint32_t graphics;
+        std::uint32_t present;
     } vk_queue_family_indices;
 
     /// @brief Vulkan queue objects for each available queue family.
