@@ -40,9 +40,7 @@ void Engine::vk_create_device()
         .queueCount = 1,
         .pQueuePriorities = &queue_priority};
 
-    vk::PhysicalDeviceFeatures device_features = {
-        // https://en.wikipedia.org/wiki/Anisotropic_filtering
-        .samplerAnisotropy = VK_TRUE};
+    vk::PhysicalDeviceFeatures device_features = {.samplerAnisotropy = VK_TRUE};
 
     vk::DeviceCreateInfo create_info = {
         .queueCreateInfoCount =
