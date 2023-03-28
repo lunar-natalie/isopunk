@@ -15,6 +15,13 @@
 
 namespace isopunk {
 
+/// @brief Throws an exception with the specified message if the condition is
+/// `false`.
+///
+/// @param condition Condition to assert as `true`.
+/// @param message Exception message string.
+///
+/// @throw std::runtime_error
 inline void runtime_assert(bool condition, const char* message)
 {
     if (!condition) {
@@ -22,9 +29,12 @@ inline void runtime_assert(bool condition, const char* message)
     }
 }
 
-/// @brief Throws an `std::runtime_error` with the last SDL error message if the
+/// @brief Throws an exception with the last SDL error message string if the
 /// condition is `false`.
+///
 /// @param condition Condition to assert as `true`.
+///
+/// @throw std::runtime_error
 inline void sdl_assert(bool condition)
 {
     if (!condition) {
@@ -34,7 +44,10 @@ inline void sdl_assert(bool condition)
 
 /// @brief Throws an `std::runtime_error` with the last SDL error message if the
 /// condition is `SDL_FALSE`.
+///
 /// @param condition Condition to assert as `SDL_TRUE`.
+///
+/// @throw std::runtime_error
 inline void sdl_assert(SDL_bool condition)
 {
     if (condition == SDL_FALSE) {
