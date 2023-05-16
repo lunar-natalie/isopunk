@@ -33,4 +33,6 @@ void Engine::terminate() noexcept
     vk_deinit();
 
     delete window;
+
+    SDL_Quit();
 }

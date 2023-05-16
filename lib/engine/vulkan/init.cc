@@ -22,5 +22,6 @@ void Engine::vk_init()
 
 void Engine::vk_deinit() noexcept
 {
+    vk_device.destroy();
     vk_instance.destroy();
 }
