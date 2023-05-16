@@ -26,7 +26,7 @@ try {
 catch (std::runtime_error& e) {
     // TODO: Logs
 
-    std::cerr << e.what() << std::endl;
+    std::cerr << e.what() << '\n';
 
     // Terminate if a fatal exception is thrown by the game instance.
     return EXIT_FAILURE;
