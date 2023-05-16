@@ -22,6 +22,8 @@ void Engine::vk_init()
 
 void Engine::vk_deinit() noexcept
 {
+    vk_device.freeCommandBuffers(vk_command_pool, vk_command_buffer);
+    vk_device.destroyCommandPool(vk_command_pool);
     vk_device.destroy();
     vk_instance.destroy();
 }

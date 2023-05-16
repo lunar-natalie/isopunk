@@ -6,6 +6,7 @@ add_library(Engine
   init.cc
   render.cc
   run.cc
+  vulkan/commands.cc
   vulkan/device.cc
   vulkan/init.cc
   vulkan/instance.cc

@@ -112,7 +112,7 @@ private:
 
     /// @brief Gets the available Vulkan instance extensions.
     ///
-    /// @see Engine::extensions
+    /// @see Engine::vk_extensions
     void vk_get_instance_extensions();
 
     /// @brief Creates the Vulkan instance, using application info derived from
@@ -124,7 +124,7 @@ private:
     /// @throw std::runtime_error if a fatal error occurs in the initialization
     /// process.
     ///
-    /// @see Engine::instance
+    /// @see Engine::vk_instance
     void vk_create_instance();
 
     /// @brief Creates the Vulkan window surface.
@@ -137,16 +137,22 @@ private:
     ///
     /// @throw std::runtime_error if no devices are found.
     ///
-    /// @see Engine::physical_devices
-    /// @see Engine::physical_device
+    /// @see Engine::vk_physical_devices
+    /// @see Engine::vk_physical_device
     void vk_get_physical_devices();
 
     /// @brief Creates the Vulkan rendering device.
     ///
     /// @throw std::runtime_error if no devices are found.
     ///
-    /// @see Engine::device
+    /// @see Engine::vk_device
     void vk_create_device();
+
+    /// @brief Creates the Vulkan command pool and allocates the command buffer.
+    ///
+    /// @see Engine::vk_command_buffer
+    /// @see Engine::vk_command_pool
+    void vk_create_command_buffer();
 
     /// @brief Main graphical window.
     Window* window;
@@ -168,6 +174,9 @@ private:
 
     /// @brief Enabled Vulkan validation layer names.
     std::vector<const char*> vk_layers;
+
+    vk::CommandPool vk_command_pool;
+    vk::CommandBuffer vk_command_buffer;
 
     /// @brief Holds the index of each available Vulkan queue family.
     struct QueueFamilyIndices {
