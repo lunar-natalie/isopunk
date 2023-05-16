@@ -27,7 +27,7 @@ void Engine::init()
     vk_init();
 }
 
-void Engine::terminate() const noexcept
+void Engine::terminate() noexcept
 {
     // Deinitialize core Vulkan structures.
     vk_deinit();

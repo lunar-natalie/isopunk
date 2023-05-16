@@ -83,7 +83,7 @@ protected:
     /// This method should be called in the destructor of the derived game class
     /// to implicitly deinitialize engine internals and frameworks when the
     /// instance goes out of scope or the program itself is terminated.
-    void terminate() const noexcept;
+    void terminate() noexcept;
 
     /// @brief Configuration for setting up the engine.
     EngineConfig config;
@@ -108,7 +108,7 @@ private:
     void vk_init();
 
     /// @brief Deinitializes the Vulkan API.
-    void vk_deinit() const noexcept;
+    void vk_deinit() noexcept;
 
     /// @brief Gets the available Vulkan instance extensions.
     ///

@@ -20,7 +20,7 @@ void Engine::vk_init()
     vk_create_device();
 }
 
-void Engine::vk_deinit() const noexcept
+void Engine::vk_deinit() noexcept
 {
     vk_instance.destroy();
 }

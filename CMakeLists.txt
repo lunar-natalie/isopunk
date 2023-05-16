@@ -142,9 +142,14 @@ include("${IsoPunk_CMAKE_SOURCE_DIR}/ClangFormat.cmake")
 if(IsoPunk_ENABLE_LIBS)
   # Headers
   add_subdirectory(include)
+  get_target_property(IsoPunk_INCLUDE_SOURCES Headers SOURCES)
 
   # Libraries
   add_subdirectory(lib)
+  get_target_property(Engine_SOURCES Engine SOURCES)
+  set(IsoPunk_LIB_SOURCES
+    ${Engine_SOURCES}
+  )
 endif()
 
 # Executables
