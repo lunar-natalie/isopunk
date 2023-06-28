@@ -32,33 +32,36 @@
 
 # Supported platforms
 
-* Linux
-* Windows 7 or newer (**TODO**)
-* macOS 10.11 or newer (**TODO**)
+- Linux
+- Windows 7 or newer (**TODO**)
+- macOS 10.11 or newer (**TODO**)
 
 # Dependencies
 
 ## Runtime environment
 
-* Vulkan 1.0.24 or newer implementation
-* Wayland or X11 (Linux)
+- Vulkan 1.0.24 or newer implementation
+- Wayland or X11 (Linux)
 
 **TODO**: Package
 
 ## Development environment
 
-* C++20 toolchain
-* CMake 3.21 or newer
-* Boost
-* SDL2
-* GLM
-* Vulkan 1.0.24 or newer SDK
+- C++20 toolchain
+- CMake 3.21 or newer
+- Boost
+- SDL2
+- GLM
+- Vulkan 1.0.24 or newer SDK
+- `glslc`
+- `glslang-validator`
 
 **Optional**
-* Doxygen
-* ClangFormat
-* Cppcheck
-* GDB
+
+- Doxygen
+- ClangFormat
+- Cppcheck
+- GDB
 
 **TODO**: Manage
 
@@ -66,50 +69,57 @@
 
 ## Using Visual Studio Code
 
-* Install the recommended workspace extensions when prompted, or run the
+- Install the recommended workspace extensions when prompted, or run the
   `Extensions: Show Recommended Extensions` command and click the
   `Install Workspace Recommended Extensions` button in the sidebar.
-* Configure the workspace for CMake when prompted, or run the `CMake: Configure`
+- Configure the workspace for CMake when prompted, or run the `CMake: Configure`
   command. Select `all` as the build target.
 
 The provided commands can be run from the Command Palette (default shortcut:
 `Ctrl/Cmd+Shift+P`).
 
 **Build targets**
-* `Tasks: Run Build Task`
-  * Default shortcut: `Ctrl/Cmd+Shift+B`
+
+- `Tasks: Run Build Task`
+  - Default shortcut: `Ctrl/Cmd+Shift+B`
 
 **Run the game**
-* `CMake: Run Without Debugging`
-  * Default shortcut: `Shift+F5`
+
+- `CMake: Run Without Debugging`
+  - Default shortcut: `Shift+F5`
 
 **Debug the game**
-* `CMake: Debug`
-  * Default shortcut: `Ctrl/Cmd+F5`
+
+- `CMake: Debug`
+  - Default shortcut: `Ctrl/Cmd+F5`
 
 **Run tests**
-* `CMake: Run Tests`
+
+- `CMake: Run Tests`
 
 ## Standalone (using POSIX sh or compatible)
 
 **Configure**
-* Debug build type
+
+- Debug build type
   ```shell
   mkdir -p build && \
   cmake -DCMAKE_BUILD_TYPE=Debug -S. -Bbuild
   ```
-* Release build type
+- Release build type
   ```shell
   mkdir -p build && \
   cmake -S. -Bbuild
   ```
 
 **Build**
+
 ```shell
 cmake --build build
 ```
 
 **Run**
+
 ```shell
 build/src/game/isopunk
 ```
@@ -124,13 +134,13 @@ for its usage.
 
 ## Source directories
 
-* `include` - Headers, stored in the project subdirectory. C++20 modules are not
+- `include` - Headers, stored in the project subdirectory. C++20 modules are not
   used in this project due to the lack of support for external use.
-* `lib` - Library source code, split into subdirectories corresponding to the
+- `lib` - Library source code, split into subdirectories corresponding to the
   name of each library target.
-* `src` - Executable source code, split into subdirectories corresponding to the
+- `src` - Executable source code, split into subdirectories corresponding to the
   name of each executable target.
-* `tests` - Unit tests, split into subdirectories corresponding to the name of
+- `tests` - Unit tests, split into subdirectories corresponding to the name of
   each tested component.
 
 # Source files
@@ -145,14 +155,16 @@ Source and header filenames are written in snake case. CMake filenames are
 written in Pascal case.
 
 **Source file extensions**
-|               | C++ Source  | C++ Header  |
+| | C++ Source | C++ Header |
 |---------------|-------------|-------------|
-| **Extension** |`.cc`        |`.h`         |
+| **Extension** |`.cc` |`.h` |
 
 ## File comments
 
 **C++**
-* Documented source files should start with a comment in the following format:
+
+- Documented source files should start with a comment in the following format:
+
 ```
 // PROJECT COMPONENT
 // Copyright (c) 2023 NAME <EMAIL>
@@ -162,8 +174,10 @@ written in Pascal case.
 /// @file FILENAME
 /// @brief BRIEF DESCRIPTION
 ```
-* Non-documented source files should start with a comment in the following
+
+- Non-documented source files should start with a comment in the following
   format:
+
 ```
 // PROJECT COMPONENT
 // Copyright (c) 2023 NAME <EMAIL>
@@ -174,7 +188,8 @@ written in Pascal case.
 ```
 
 **CMake**
-* Files should start with `## A SHORT DESCRIPTION`.
+
+- Files should start with `## A SHORT DESCRIPTION`.
 
 ## Documentation comments
 
@@ -214,6 +229,5 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <https://www.gnu.org/licenses/>.
 
 See the `LICENSE` file for more information.
-
 
 [www-docs]: https://lunar-natalie.github.io/isopunk
