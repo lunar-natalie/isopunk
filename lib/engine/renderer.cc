@@ -13,5 +13,5 @@ using namespace isopunk;
 
 Renderer::Renderer(const EngineConfig& config)
 {
-    instance = create_instance(config);
+    instance = create_instance(context, config);
 }

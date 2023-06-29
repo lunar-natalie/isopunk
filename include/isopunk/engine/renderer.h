@@ -21,7 +21,8 @@ public:
     Renderer(const EngineConfig& config);
 
 private:
-    static vkptr::Instance create_instance(const EngineConfig& config);
+    static vkptr::Instance create_instance(vkr::Context& context,
+                                           const EngineConfig& config);
 
     vkr::Context context;
     vkptr::Instance instance;
