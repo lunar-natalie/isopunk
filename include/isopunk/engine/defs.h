@@ -25,6 +25,7 @@ namespace vkptr {
 typedef std::shared_ptr<vkr::Instance> Instance;
 typedef std::unique_ptr<vkr::PhysicalDevice> PhysicalDevice;
 typedef std::shared_ptr<std::vector<vkr::PhysicalDevice>> PhysicalDevices;
+typedef std::unique_ptr<vkr::SurfaceKHR> SurfaceKHR;
 
 } // namespace vkptr
 

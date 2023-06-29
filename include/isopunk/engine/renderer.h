@@ -15,6 +15,7 @@
 
 #include <isopunk/engine/config.h>
 #include <isopunk/engine/defs.h>
+#include <isopunk/engine/window.h>
 
 namespace isopunk {
 
@@ -29,9 +30,13 @@ private:
     static std::pair<vkptr::PhysicalDevice, vkptr::PhysicalDevices>
     get_physical_devices(vkptr::Instance& instance);
 
+    static vkptr::SurfaceKHR create_surface(Window& window,
+                                            vkptr::Instance& instance);
+
     vkr::Context context;
     vkptr::Instance instance;
     vkptr::PhysicalDevice physical_device;
+    vkptr::SurfaceKHR surface;
 };
 
 } // namespace isopunk

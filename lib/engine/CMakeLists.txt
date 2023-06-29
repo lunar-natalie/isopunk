@@ -9,6 +9,7 @@ add_library(Engine
   "renderer.cc"
   "renderer/instance.cc"
   "renderer/physical_devices.cc"
+  "renderer/surface.cc"
 )
 
 set_target_properties(Engine
