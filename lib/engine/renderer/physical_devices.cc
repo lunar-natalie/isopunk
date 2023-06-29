@@ -22,7 +22,7 @@ using namespace isopunk;
 std::pair<vkptr::PhysicalDevice, vkptr::PhysicalDevices>
 Renderer::get_physical_devices(vkptr::Instance& instance)
 {
-    vkr::PhysicalDevices physical_devices(*instance.get());
+    auto physical_devices = instance.get()->enumeratePhysicalDevices();
     runtime_assert(physical_devices.size() > 0, "No physical devices found");
     return std::make_pair(
         std::make_unique<vkr::PhysicalDevice>(physical_devices.front()),
