@@ -10,11 +10,13 @@
 #define ISOPUNK_ENGINE_H
 
 #include <cstdint>
+#include <memory>
 #include <vector>
 
 #include <SDL2/SDL.h>
 #include <vulkan/vulkan.hpp>
 
+#include "isopunk/engine/renderer.h"
 #include <isopunk/engine/config.h>
 #include <isopunk/engine/window.h>
 
@@ -31,10 +33,11 @@ public:
 protected:
     const EngineConfig config;
     static const EngineConfig default_config;
-    Window* window;
+    std::unique_ptr<Window> window;
 
 private:
     void draw();
+    std::unique_ptr<Renderer> renderer;
 };
 
 } // namespace isopunk

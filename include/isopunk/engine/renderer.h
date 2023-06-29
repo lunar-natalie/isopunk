@@ -9,9 +9,23 @@
 #ifndef ISOPUNK_ENGINE_RENDERER_H
 #define ISOPUNK_ENGINE_RENDERER_H
 
+#include <vulkan/vulkan_raii.hpp>
+
+#include <isopunk/engine/config.h>
+#include <isopunk/engine/defs.h>
+
 namespace isopunk {
 
-class Renderer {};
+class Renderer {
+public:
+    Renderer(const EngineConfig& config);
+
+private:
+    static vkptr::Instance create_instance(const EngineConfig& config);
+
+    vkr::Context context;
+    vkptr::Instance instance;
+};
 
 } // namespace isopunk
 

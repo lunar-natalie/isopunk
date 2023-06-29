@@ -6,6 +6,8 @@ add_library(Engine
   "engine.cc"
   "run.cc"
   "window.cc"
+  "renderer.cc"
+  "renderer/instance.cc"
 )
 
 set_target_properties(Engine
