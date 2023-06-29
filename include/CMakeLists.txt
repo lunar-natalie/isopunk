@@ -14,10 +14,11 @@ target_sources(Headers PUBLIC FILE_SET HEADERS
   BASE_DIRS "${CMAKE_CURRENT_BINARY_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}"
   FILES
     "${CMAKE_CURRENT_BINARY_DIR}/isopunk/version.h"
-    isopunk/engine.h
-    isopunk/engine/config.h
-    isopunk/engine/utils.h
-    isopunk/engine/window.h
+    "isopunk/engine.h"
+    "isopunk/engine/config.h"
+    "isopunk/engine/renderer.h"
+    "isopunk/engine/utils.h"
+    "isopunk/engine/window.h"
 )
 
 set_target_properties(Headers

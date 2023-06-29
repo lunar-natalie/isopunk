@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file run.cc
-/// @brief Engine runtime loop.
+/// @brief Runtime event handler.
 
 #include <isopunk/engine.h>
 
@@ -12,7 +12,7 @@
 
 using namespace isopunk;
 
-void Engine::run()
+void Engine::start()
 {
     SDL_Event e;
     bool should_exit = false;
@@ -28,7 +28,7 @@ void Engine::run()
             }
         }
 
-        // Render.
+        // Draw objects.
         draw();
     }
 }

@@ -10,7 +10,6 @@
 #define ISOPUNK_ENGINE_WINDOW_H
 
 #include <cstdint>
-#include <string>
 
 #include <SDL2/SDL.h>
 #include <vulkan/vulkan.hpp>
@@ -26,7 +25,7 @@ struct Window {
     /// @param width Initial width of the window, in pixels.
     /// @param height Initial height of the window, in pixels.
     /// @param flags Window creation flags to pass to SDL.
-    Window(const std::string& title, std::uint32_t width, std::uint32_t height,
+    Window(const char* title, std::uint32_t width, std::uint32_t height,
            Uint32 flags = SDL_WINDOW_VULKAN);
 
     /// @brief Destroys the window and its SDL object.

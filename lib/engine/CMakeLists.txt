@@ -1,23 +1,16 @@
 ## Engine build configuration.
 
 add_library(Engine
-  config.cc
-  engine.cc
-  init.cc
-  render.cc
-  run.cc
-  vulkan/commands.cc
-  vulkan/device.cc
-  vulkan/init.cc
-  vulkan/instance.cc
-  vulkan/physical_device.cc
-  vulkan/surface.cc
-  window.cc
+  "config.cc"
+  "draw.cc"
+  "engine.cc"
+  "run.cc"
+  "window.cc"
 )
 
 set_target_properties(Engine
   PROPERTIES
-    OUTPUT_NAME ipkengine
+    OUTPUT_NAME "ipkengine"
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION}
     CXX_STANDARD ${IsoPunk_CXX_STANDARD}

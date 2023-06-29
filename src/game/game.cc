@@ -3,8 +3,8 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-/// @file game.cc
-/// @brief Game constructor and destructor implementation.
+/// @file init.cc
+/// @brief Game class member definitions.
 
 #include "game.h"
 
@@ -19,5 +19,4 @@ Game::Game()
 
 Game::~Game()
 {
-    terminate();
 }

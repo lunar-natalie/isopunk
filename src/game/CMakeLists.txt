@@ -1,10 +1,9 @@
 ## Game build configuration.
 
 add_executable(Game
-  game.cc
-  game.h
-  main.cc
-  runtime.cc
+  "game.cc"
+  "game.h"
+  "main.cc"
 )
 
 set_target_properties(Game

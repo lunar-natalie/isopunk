@@ -9,7 +9,6 @@
 #include <isopunk/engine/window.h>
 
 #include <cstdint>
-#include <string>
 
 #include <SDL2/SDL.h>
 
@@ -17,14 +16,14 @@
 
 using namespace isopunk;
 
-Window::Window(const std::string& title, std::uint32_t width,
-               std::uint32_t height, Uint32 flags)
+Window::Window(const char* title, std::uint32_t width, std::uint32_t height,
+               Uint32 flags)
     : extent{width, height}
 {
-    data = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED,
+    data = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED,
                             SDL_WINDOWPOS_UNDEFINED, extent.width,
                             extent.height, flags);
-    sdl_assert(data != NULL);
+    sdl_assert(data != nullptr);
 }
 
 Window::~Window() noexcept
