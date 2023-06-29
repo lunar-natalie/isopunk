@@ -14,4 +14,5 @@ using namespace isopunk;
 Renderer::Renderer(const EngineConfig& config)
 {
     instance = create_instance(context, config);
+    physical_device = get_physical_devices(instance).first;
 }

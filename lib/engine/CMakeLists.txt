@@ -8,6 +8,7 @@ add_library(Engine
   "window.cc"
   "renderer.cc"
   "renderer/instance.cc"
+  "renderer/physical_devices.cc"
 )
 
 set_target_properties(Engine

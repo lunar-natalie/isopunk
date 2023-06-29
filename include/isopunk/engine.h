@@ -9,15 +9,13 @@
 #ifndef ISOPUNK_ENGINE_H
 #define ISOPUNK_ENGINE_H
 
-#include <cstdint>
 #include <memory>
-#include <vector>
 
 #include <SDL2/SDL.h>
 #include <vulkan/vulkan.hpp>
 
-#include "isopunk/engine/renderer.h"
 #include <isopunk/engine/config.h>
+#include <isopunk/engine/renderer.h>
 #include <isopunk/engine/window.h>
 
 namespace isopunk {
