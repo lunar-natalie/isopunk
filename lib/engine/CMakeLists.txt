@@ -26,6 +26,7 @@ target_link_libraries(Engine
   PUBLIC
     Headers
 
+    Boost::log
     glm::glm
     SDL2::SDL2main
 )

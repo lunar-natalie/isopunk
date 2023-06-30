@@ -4,6 +4,8 @@ add_executable(Game
   "game.cc"
   "game.h"
   "main.cc"
+  "options.cc"
+  "options.h"
 )
 
 set_target_properties(Game

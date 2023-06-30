@@ -10,6 +10,8 @@
 #define ISOPUNK_ENGINE_VERSION_H
 
 #include <cstdint>
+#include <sstream>
+#include <string>
 
 #include <vulkan/vulkan.hpp>
 
@@ -27,6 +29,14 @@ struct Version {
     std::uint32_t mk_vk_api_version() const
     {
         return VK_MAKE_API_VERSION(0, major, minor, patch);
+    }
+
+    std::string to_string() const
+    {
+        std::stringstream ss;
+        ss << std::to_string(major) << "." << std::to_string(minor) << "."
+           << std::to_string(patch);
+        return ss.str();
     }
 };
 

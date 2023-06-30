@@ -12,6 +12,8 @@ project(IsoPunk
   HOMEPAGE_URL "https://github.com/lunar-natalie/isopunk"
   LANGUAGES CXX)
 
+set(IsoPunk_VERSION_YEAR 2023)
+
 ################################################################################
 ## Options #####################################################################
 ################################################################################
@@ -51,6 +53,7 @@ find_package(Vulkan 1.0.24 REQUIRED)
 # Portable multi-purpose C++ source libraries.
 find_package(Boost
   COMPONENTS
+    log                 # Logging library for debug messages
     program_options     # Command-line and config-based option parsing
     unit_test_framework # Framework for unit testing project components
 )

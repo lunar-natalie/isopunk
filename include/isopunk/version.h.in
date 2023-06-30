@@ -20,6 +20,8 @@ constexpr const Version ENGINE_VERSION = {
     .minor = @PROJECT_VERSION_MINOR@,
     .patch = @PROJECT_VERSION_PATCH@};
 
+const std::string ENGINE_YEAR = "@IsoPunk_VERSION_YEAR@";
+
 } // namespace isopunk
 
 #endif // ISOPUNK_VERSION_H
