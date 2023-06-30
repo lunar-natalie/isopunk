@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.23)
 ################################################################################
 
 project(IsoPunk
-  VERSION 0.1.0
+  VERSION 0.0.1
   DESCRIPTION "Isometric turn-based strategy game"
   HOMEPAGE_URL "https://github.com/lunar-natalie/isopunk"
   LANGUAGES CXX)
