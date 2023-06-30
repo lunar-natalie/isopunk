@@ -6,10 +6,7 @@
             "label": "CMake: build all",
             "command": "build",
             "targets": ["all"],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
+            "group": "build",
             "problemMatcher": [],
             "detail": "CMake build task"
         }
