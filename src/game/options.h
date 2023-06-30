@@ -19,6 +19,7 @@ class Options {
 public:
     Options(int argc, const char* const* argv);
 
+    std::string                               basename;
     std::unique_ptr<opt::options_description> desc;
     std::shared_ptr<opt::variables_map>       vm;
 

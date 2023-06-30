@@ -20,8 +20,9 @@ Options::Options(int argc, const char* const* argv)
     : ac{argc},
       av{argv}
 {
+    basename = fs::path(av[0]).stem().string();
     std::stringstream desc_ss;
-    desc_ss << "Usage: " << fs::path(av[0]).stem().string() << " [OPTION]...\n"
+    desc_ss << "Usage: " << basename << " [OPTION]...\n"
             << "A cross-platform isometric turn-based strategy game with a "
                "cyberpunk theme.\n"
             << "\n"

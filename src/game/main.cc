@@ -23,25 +23,34 @@ try {
     Options opt(argc, argv);
     opt.desc->add_options()("help", "display this help and exit")(
         "version", "output version information and exit");
-    auto vm = opt.parse_args();
 
-    if (vm->count("help")) {
-        std::cout << *opt.desc << "\n";
-        return EXIT_FAILURE;
+    try {
+        auto vm = opt.parse_args();
+
+        if (vm->count("help")) {
+            std::cout << *opt.desc << "\n";
+            return EXIT_FAILURE;
+        }
+        else if (vm->count("version")) {
+            std::cout
+                << "IsoPunk (ipkengine) " << ENGINE_VERSION.to_string() << "\n"
+                << "Copyright (C) " << ENGINE_YEAR
+                << " The IsoPunk Project Authors.\n"
+                << "License GPLv3+: GNU GPL version 3 or later "
+                   "<https://gnu.org/licenses/gpl.html>.\n"
+                << "This is free software: you are free to change and "
+                   "redistribute it.\n"
+                << "There is NO WARRANTY, to the extent permitted by law.\n"
+                << "\n"
+                << "Written by Natalie Wiggins.\n";
+            return EXIT_SUCCESS;
+        }
     }
-    else if (vm->count("version")) {
-        std::cout << "IsoPunk (ipkengine) " << ENGINE_VERSION.to_string()
-                  << ")\n"
-                  << "Copyright (C) " << ENGINE_YEAR
-                  << " The IsoPunk Project Authors.\n"
-                  << "License GPLv3+: GNU GPL version 3 or later "
-                     "<https://gnu.org/licenses/gpl.html>.\n"
-                  << "This is free software: you are free to change and "
-                     "redistribute it.\n"
-                  << "There is NO WARRANTY, to the extent permitted by law.\n"
-                  << "\n"
-                  << "Written by Natalie Wiggins\n";
-        return EXIT_SUCCESS;
+    catch (opt::unknown_option& e) {
+        std::cerr << opt.basename << ": unrecognized option '"
+                  << e.get_option_name() << "'\n"
+                  << "Try '" << opt.basename
+                  << " --help' for more information.\n";
     }
 
     // Initialize engine and start the game
