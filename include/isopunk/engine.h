@@ -45,7 +45,7 @@ protected:
     const EngineConfig        conf;
     static const EngineConfig default_conf;
 
-    std::unique_ptr<Window> wnd;
+    WindowPtr wnd;
 
 private:
     std::unique_ptr<Renderer> renderer;

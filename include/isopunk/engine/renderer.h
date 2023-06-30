@@ -9,11 +9,6 @@
 #ifndef ISOPUNK_ENGINE_RENDERER_H
 #define ISOPUNK_ENGINE_RENDERER_H
 
-#include <utility>
-#include <vector>
-
-#include <vulkan/vulkan_raii.hpp>
-
 #include <isopunk/engine/config.h>
 #include <isopunk/engine/rdef.h>
 #include <isopunk/engine/renderer/queues.h>
@@ -40,6 +35,7 @@ public:
 
 private:
     vkr::Context          ctx;
+    vkptr::Extensions     ext;
     vkptr::Instance       inst;
     vkptr::PhysicalDevice phys_dev;
     vkptr::SurfaceKHR     surface;
@@ -47,11 +43,11 @@ private:
     vkptr::QueuePair      queues;
     vkptr::Device         dev;
 
-    static std::vector<const char*> get_extensions(WindowPtr& wnd);
+    static vkptr::Extensions get_extensions(WindowPtr& wnd);
 
-    static vkptr::Instance create_instance(EngineConfig const& config,
-                                           vkr::Context&       ctx,
-                                           WindowPtr&          wnd);
+    static vkptr::Instance create_instance(EngineConfig const&      config,
+                                           vkr::Context&            ctx,
+                                           vkptr::Extensions const& ext);
 
     static std::pair<vkptr::PhysicalDevice, vkptr::PhysicalDevices>
     get_physical_devices(vkptr::Instance const& inst);
@@ -62,6 +58,9 @@ private:
     static vkptr::QueueIndexPair
     get_queue_indices(vkptr::PhysicalDevice const& phys_dev,
                       vkptr::SurfaceKHR const&     surface);
+
+    static vkptr::Device create_device(vkptr::PhysicalDevice&       phys_dev,
+                                       vkptr::QueueIndexPair const& idx);
 
     static vkptr::QueuePair get_queues(vkptr::QueueIndexPair const& idx,
                                        vkptr::Device&               dev);

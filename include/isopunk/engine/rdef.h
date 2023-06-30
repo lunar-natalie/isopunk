@@ -9,7 +9,6 @@
 #ifndef ISOPUNK_ENGINE_RDEF_H
 #define ISOPUNK_ENGINE_RDEF_H
 
-#include <cstdint>
 #include <memory>
 #include <vector>
 
@@ -24,15 +23,24 @@ using namespace vk::raii;
 
 } // namespace vkr
 
+/// @brief Vulkan type extensions.
+namespace vkx {
+
+typedef std::vector<const char*>         Extensions;
+typedef std::vector<vkr::PhysicalDevice> PhysicalDevices;
+
+} // namespace vkx
+
 /// @brief Movable pointer types for Vulkan objects.
 namespace vkptr {
 
-typedef std::shared_ptr<vkr::Instance>                    Instance;
-typedef std::unique_ptr<vkr::PhysicalDevice>              PhysicalDevice;
-typedef std::shared_ptr<std::vector<vkr::PhysicalDevice>> PhysicalDevices;
-typedef std::unique_ptr<vkr::SurfaceKHR>                  SurfaceKHR;
-typedef std::unique_ptr<vkr::Queue>                       Queue;
-typedef std::unique_ptr<vkr::Device>                      Device;
+typedef std::shared_ptr<vkr::Instance>        Instance;
+typedef std::unique_ptr<vkr::PhysicalDevice>  PhysicalDevice;
+typedef std::shared_ptr<vkx::PhysicalDevices> PhysicalDevices;
+typedef std::unique_ptr<vkr::SurfaceKHR>      SurfaceKHR;
+typedef std::unique_ptr<vkr::Queue>           Queue;
+typedef std::unique_ptr<vkr::Device>          Device;
+typedef std::shared_ptr<vkx::Extensions>      Extensions;
 
 } // namespace vkptr
 

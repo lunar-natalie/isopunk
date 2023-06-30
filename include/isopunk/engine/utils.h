@@ -9,7 +9,6 @@
 #ifndef ISOPUNK_ENGINE_UTILS_H
 #define ISOPUNK_ENGINE_UTILS_H
 
-#include <sstream>
 #include <stdexcept>
 
 #include <SDL2/SDL.h>

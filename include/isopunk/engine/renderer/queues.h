@@ -37,8 +37,8 @@ namespace vkx {
 /// @brief Holds the index of each available queue family for a given physical
 /// device.
 struct QueueIndexPair {
-    uint32_t gfx;     /// @brief Graphics queue index
-    uint32_t present; /// @brief Present queue index
+    std::uint32_t gfx;     /// @brief Graphics queue index
+    std::uint32_t present; /// @brief Present queue index
 };
 
 /// @brief Holds a queue object for each queue family for a given physical

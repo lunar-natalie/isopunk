@@ -11,11 +11,9 @@
 #include <cstdint>
 #include <memory>
 #include <stdexcept>
-#include <vector>
 
 #include <SDL2/SDL_vulkan.h>
-#include <vulkan/vulkan_core.h>
-#include <vulkan/vulkan_structs.hpp>
+#include <vulkan/vulkan.hpp>
 
 #include <isopunk/engine/config.h>
 #include <isopunk/engine/rdef.h>
@@ -25,26 +23,26 @@
 
 using namespace isopunk;
 
-std::vector<const char*> Renderer::get_extensions(WindowPtr& wnd)
+vkptr::Extensions Renderer::get_extensions(WindowPtr& wnd)
 {
-    std::vector<const char*> ret;
-    unsigned int             count;
+    vkx::Extensions ext;
+    unsigned int    count;
 
     // Enumerate extensions
     sdl_assert(SDL_Vulkan_GetInstanceExtensions(wnd->data, &count, nullptr));
 
     // Allocate
-    ret = std::vector<const char*>(count);
+    ext = vkx::Extensions(count);
 
     // Retrieve extension names
-    sdl_assert(SDL_Vulkan_GetInstanceExtensions(wnd->data, &count, ret.data()));
+    sdl_assert(SDL_Vulkan_GetInstanceExtensions(wnd->data, &count, ext.data()));
 
-    return ret;
+    return std::make_shared<vkx::Extensions>(ext);
 }
 
-vkptr::Instance Renderer::create_instance(EngineConfig const& config,
-                                          vkr::Context&       ctx,
-                                          WindowPtr&          wnd)
+vkptr::Instance Renderer::create_instance(EngineConfig const&      config,
+                                          vkr::Context&            ctx,
+                                          vkptr::Extensions const& ext)
 {
     vk::ApplicationInfo app_info{
         .pApplicationName   = config.app_name.c_str(),
@@ -53,15 +51,13 @@ vkptr::Instance Renderer::create_instance(EngineConfig const& config,
         .engineVersion      = ENGINE_VERSION.mk_vk_api_version(),
         .apiVersion         = VK_API_VERSION_1_0};
 
-    auto ext = get_extensions(wnd);
-
     try {
         return std::make_shared<vkr::Instance>(
             ctx,
             vk::InstanceCreateInfo{.pApplicationInfo = &app_info,
                                    .enabledExtensionCount =
-                                       static_cast<uint32_t>(ext.size()),
-                                   .ppEnabledExtensionNames = ext.data()});
+                                       static_cast<std::uint32_t>(ext->size()),
+                                   .ppEnabledExtensionNames = ext->data()});
     }
     catch (vk::SystemError& e) {
         throw std::runtime_error(e.what());

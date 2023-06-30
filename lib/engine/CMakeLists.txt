@@ -5,6 +5,7 @@ add_library(Engine
   "draw.cc"
   "engine.cc"
   "renderer.cc"
+  "renderer/device.cc"
   "renderer/instance.cc"
   "renderer/phys_device.cc"
   "renderer/queues.cc"

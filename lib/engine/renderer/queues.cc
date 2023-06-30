@@ -13,9 +13,8 @@
 #include <limits>
 #include <memory>
 #include <stdexcept>
-#include <vector>
 
-#include <vulkan/vulkan_structs.hpp>
+#include <vulkan/vulkan.hpp>
 
 #include <isopunk/engine/rdef.h>
 #include <isopunk/engine/renderer/queues.h>
@@ -31,7 +30,7 @@ Renderer::get_queue_indices(vkptr::PhysicalDevice const& phys_dev,
     std::vector<vk::QueueFamilyProperties>::const_iterator prop_itr;
 
     auto props = phys_dev->getQueueFamilyProperties();
-    runtime_assert(props.size() < std::numeric_limits<uint32_t>::max(),
+    runtime_assert(props.size() < std::numeric_limits<std::uint32_t>::max(),
                    "Queue family properties out of range");
 
     // Find first index into properties which supports graphics
@@ -43,7 +42,7 @@ Renderer::get_queue_indices(vkptr::PhysicalDevice const& phys_dev,
     if (prop_itr != props.end()) {
         // Set graphics index if found
         queue_idx.gfx =
-            static_cast<uint32_t>(std::distance(props.cbegin(), prop_itr));
+            static_cast<std::uint32_t>(std::distance(props.cbegin(), prop_itr));
 
         // Check if first index supports present
         if (phys_dev->getSurfaceSupportKHR(queue_idx.gfx, **surface)) {
@@ -54,7 +53,7 @@ Renderer::get_queue_indices(vkptr::PhysicalDevice const& phys_dev,
 
         // Find next index supporting present
         for (size_t i = 0; i < props.size(); ++i) {
-            if (phys_dev->getSurfaceSupportKHR(static_cast<uint32_t>(i),
+            if (phys_dev->getSurfaceSupportKHR(static_cast<std::uint32_t>(i),
                                                **surface)) {
                 queue_idx.present = i;
                 // Return using separate graphics and queue index

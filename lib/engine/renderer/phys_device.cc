@@ -8,16 +8,13 @@
 
 #include <isopunk/engine/renderer.h>
 
-#include <iterator>
-#include <limits>
 #include <memory>
 #include <stdexcept>
-#include <vector>
+#include <utility>
 
-#include <vulkan/vulkan_structs.hpp>
+#include <vulkan/vulkan.hpp>
 
 #include <isopunk/engine/rdef.h>
-#include <isopunk/engine/renderer/queues.h>
 #include <isopunk/engine/utils.h>
 
 using namespace isopunk;
@@ -29,5 +26,5 @@ Renderer::get_physical_devices(vkptr::Instance const& inst)
     runtime_assert(phys_devs.size() > 0, "No physical devices found");
     return std::make_pair(
         std::make_unique<vkr::PhysicalDevice>(phys_devs.front()),
-        std::make_shared<std::vector<vkr::PhysicalDevice>>(phys_devs));
+        std::make_shared<vkx::PhysicalDevices>(phys_devs));
 }

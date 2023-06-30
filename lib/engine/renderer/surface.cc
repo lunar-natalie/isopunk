@@ -11,8 +11,7 @@
 #include <memory>
 
 #include <SDL2/SDL_vulkan.h>
-#include <vulkan/vulkan_core.h>
-#include <vulkan/vulkan_structs.hpp>
+#include <vulkan/vulkan.hpp>
 
 #include <isopunk/engine/rdef.h>
 #include <isopunk/engine/utils.h>
