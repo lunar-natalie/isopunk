@@ -9,6 +9,8 @@
 #ifndef ISOPUNK_ENGINE_RENDERER_H
 #define ISOPUNK_ENGINE_RENDERER_H
 
+#include <vulkan/vulkan.hpp>
+
 #include <isopunk/engine/config.h>
 #include <isopunk/engine/rdef.h>
 #include <isopunk/engine/renderer/queues.h>
@@ -34,20 +36,29 @@ public:
     Renderer(EngineConfig const& conf, WindowPtr& wnd);
 
 private:
-    vkr::Context          ctx;
-    vkptr::Extensions     ext;
-    vkptr::Instance       inst;
+    vkr::Context      ctx;
+    vkptr::Extensions ext;
+    vkptr::Instance   inst;
+#ifndef NDEBUG
+    vkptr::DebugUtilsMessengerEXT dbg_messenger;
+#endif
     vkptr::PhysicalDevice phys_dev;
     vkptr::SurfaceKHR     surface;
     vkptr::QueueIndexPair queue_idx;
     vkptr::QueuePair      queues;
     vkptr::Device         dev;
 
-    static vkptr::Extensions get_extensions(WindowPtr& wnd);
+    static vkptr::Extensions get_extensions(WindowPtr&          wnd,
+                                            vkr::Context const& ctx);
 
     static vkptr::Instance create_instance(EngineConfig const&      config,
                                            vkr::Context&            ctx,
                                            vkptr::Extensions const& ext);
+
+#ifndef NDEBUG
+    static vkptr::DebugUtilsMessengerEXT
+    create_debug_messenger(vkptr::Instance& inst);
+#endif
 
     static std::pair<vkptr::PhysicalDevice, vkptr::PhysicalDevices>
     get_physical_devices(vkptr::Instance const& inst);
@@ -64,6 +75,14 @@ private:
 
     static vkptr::QueuePair get_queues(vkptr::QueueIndexPair const& idx,
                                        vkptr::Device&               dev);
+
+#ifndef NDEBUG
+    static VKAPI_ATTR VkBool32 VKAPI_CALL debug_messenger_callback(
+        VkDebugUtilsMessageSeverityFlagBitsEXT      messageSeverity,
+        VkDebugUtilsMessageTypeFlagsEXT             messageTypes,
+        VkDebugUtilsMessengerCallbackDataEXT const* pCallbackData,
+        void* /*pUserData*/);
+#endif
 };
 
 } // namespace isopunk

@@ -12,6 +12,10 @@ add_library(Engine
   "renderer/surface.cc"
   "run.cc"
   "window.cc"
+
+  $<$<CONFIG:Debug>:
+    "renderer/debug.cc"
+  >
 )
 
 set_target_properties(Engine
@@ -26,7 +30,6 @@ target_link_libraries(Engine
   PUBLIC
     Headers
 
-    Boost::log
     glm::glm
     SDL2::SDL2main
 )

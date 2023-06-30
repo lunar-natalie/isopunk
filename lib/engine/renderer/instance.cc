@@ -23,7 +23,8 @@
 
 using namespace isopunk;
 
-vkptr::Extensions Renderer::get_extensions(WindowPtr& wnd)
+vkptr::Extensions Renderer::get_extensions(WindowPtr&          wnd,
+                                           vkr::Context const& ctx)
 {
     vkx::Extensions ext;
     unsigned int    count;
@@ -36,6 +37,24 @@ vkptr::Extensions Renderer::get_extensions(WindowPtr& wnd)
 
     // Retrieve extension names
     sdl_assert(SDL_Vulkan_GetInstanceExtensions(wnd->data, &count, ext.data()));
+
+#ifndef NDEBUG
+    ext.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
+#endif
+
+    std::vector<vk::ExtensionProperties> props =
+        ctx.enumerateInstanceExtensionProperties();
+
+    auto prop_itr = std::find_if(
+        props.begin(), props.end(), [](vk::ExtensionProperties const& ep) {
+            return strcmp(ep.extensionName, VK_EXT_DEBUG_UTILS_EXTENSION_NAME)
+                   == 0;
+        });
+    if (prop_itr == props.end()) {
+        throw std::runtime_error(
+            "Failed to find Vulkan "
+            "extension " VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
+    }
 
     return std::make_shared<vkx::Extensions>(ext);
 }
@@ -52,7 +71,7 @@ vkptr::Instance Renderer::create_instance(EngineConfig const&      config,
         .apiVersion         = VK_API_VERSION_1_0};
 
     try {
-        return std::make_shared<vkr::Instance>(
+        return std::make_unique<vkr::Instance>(
             ctx,
             vk::InstanceCreateInfo{.pApplicationInfo = &app_info,
                                    .enabledExtensionCount =

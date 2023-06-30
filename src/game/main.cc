@@ -42,7 +42,11 @@ try {
                    "redistribute it.\n"
                 << "There is NO WARRANTY, to the extent permitted by law.\n"
                 << "\n"
-                << "Written by Natalie Wiggins.\n";
+                << "Written by Natalie Wiggins.\n"
+                << "\n"
+                << "Some ipkengine code derives from non-GPLv3+ sources.\n"
+                << "See the NOTICE file in the source distribution which you "
+                   "should have recieved for more information.\n";
             return EXIT_SUCCESS;
         }
     }

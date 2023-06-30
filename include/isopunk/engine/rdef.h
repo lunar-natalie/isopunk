@@ -34,13 +34,14 @@ typedef std::vector<vkr::PhysicalDevice> PhysicalDevices;
 /// @brief Movable pointer types for Vulkan objects.
 namespace vkptr {
 
-typedef std::shared_ptr<vkr::Instance>        Instance;
-typedef std::unique_ptr<vkr::PhysicalDevice>  PhysicalDevice;
-typedef std::shared_ptr<vkx::PhysicalDevices> PhysicalDevices;
-typedef std::unique_ptr<vkr::SurfaceKHR>      SurfaceKHR;
-typedef std::unique_ptr<vkr::Queue>           Queue;
-typedef std::unique_ptr<vkr::Device>          Device;
-typedef std::shared_ptr<vkx::Extensions>      Extensions;
+typedef std::unique_ptr<vkr::Instance>               Instance;
+typedef std::unique_ptr<vkr::DebugUtilsMessengerEXT> DebugUtilsMessengerEXT;
+typedef std::unique_ptr<vkr::PhysicalDevice>         PhysicalDevice;
+typedef std::shared_ptr<vkx::PhysicalDevices>        PhysicalDevices;
+typedef std::unique_ptr<vkr::SurfaceKHR>             SurfaceKHR;
+typedef std::unique_ptr<vkr::Queue>                  Queue;
+typedef std::unique_ptr<vkr::Device>                 Device;
+typedef std::shared_ptr<vkx::Extensions>             Extensions;
 
 } // namespace vkptr
 

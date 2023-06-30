@@ -15,8 +15,11 @@ using namespace isopunk;
 
 Renderer::Renderer(EngineConfig const& conf, WindowPtr& wnd)
 {
-    ext       = get_extensions(wnd);
-    inst      = create_instance(conf, ctx, ext);
+    ext  = get_extensions(wnd, ctx);
+    inst = create_instance(conf, ctx, ext);
+#ifndef NDEBUG
+    dbg_messenger = create_debug_messenger(inst);
+#endif
     phys_dev  = get_physical_devices(inst).first;
     surface   = create_surface(wnd, inst);
     queue_idx = get_queue_indices(phys_dev, surface);
