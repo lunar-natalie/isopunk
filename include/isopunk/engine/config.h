@@ -16,24 +16,12 @@
 
 namespace isopunk {
 
-/// @brief Engine configuration.
-///
-/// Contains properties used to set up the engine. These properties are used to
-/// set up the graphical context and may be dynamically loaded by the game
-/// implementation.
+/// @brief Engine configuration attributes.
 struct EngineConfig {
-    /// @brief Name of the application to provide to the graphics API and to be
-    /// used as the title of the main window.
-    std::string application_name;
-
-    /// @brief Application version.
-    Version application_version;
-
-    /// @brief Initial width of the main window.
-    std::uint32_t window_width;
-
-    /// @brief Initial height of the main window.
-    std::uint32_t window_height;
+    std::string   app_name;      /// @brief Application name
+    Version       app_version;   /// @brief Application version
+    std::uint32_t window_width;  /// @brief Initial main window width
+    std::uint32_t window_height; /// @brief Initial main window height
 };
 
 } // namespace isopunk

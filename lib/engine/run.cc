@@ -15,11 +15,9 @@ using namespace isopunk;
 void Engine::start()
 {
     SDL_Event e;
-    bool should_exit = false;
+    bool      should_exit = false;
 
-    // Main loop.
     while (!should_exit) {
-        // Process events.
         while (SDL_PollEvent(&e) != 0) {
             switch (e.type) {
             case SDL_QUIT:
@@ -28,7 +26,6 @@ void Engine::start()
             }
         }
 
-        // Draw objects.
         draw();
     }
 }

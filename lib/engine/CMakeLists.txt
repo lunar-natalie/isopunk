@@ -4,12 +4,13 @@ add_library(Engine
   "config.cc"
   "draw.cc"
   "engine.cc"
-  "run.cc"
-  "window.cc"
   "renderer.cc"
   "renderer/instance.cc"
-  "renderer/physical_devices.cc"
+  "renderer/phys_device.cc"
+  "renderer/queues.cc"
   "renderer/surface.cc"
+  "run.cc"
+  "window.cc"
 )
 
 set_target_properties(Engine

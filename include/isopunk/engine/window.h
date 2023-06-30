@@ -4,39 +4,41 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file window.h
-/// @brief Window wrapper.
+/// @brief Graphical window definition.
 
 #ifndef ISOPUNK_ENGINE_WINDOW_H
 #define ISOPUNK_ENGINE_WINDOW_H
 
 #include <cstdint>
+#include <memory>
 
 #include <SDL2/SDL.h>
 #include <vulkan/vulkan.hpp>
 
 namespace isopunk {
 
-/// @brief Graphical window wrapper.
+/// @brief Graphical window.
+///
+/// Wraps the SDL window type.
 struct Window {
-    /// @brief Creates a new window, initializing the object's SDL window and
-    /// extent (size).
-    ///
-    /// @param title String to be used for the window title.
-    /// @param width Initial width of the window, in pixels.
-    /// @param height Initial height of the window, in pixels.
-    /// @param flags Window creation flags to pass to SDL.
-    Window(const char* title, std::uint32_t width, std::uint32_t height,
-           Uint32 flags = SDL_WINDOW_VULKAN);
-
-    /// @brief Destroys the window and its SDL object.
-    ~Window() noexcept;
-
-    /// @brief SDL window data.
-    SDL_Window* data;
-
-    /// @brief Size in pixels.
+    SDL_Window*  data;
     vk::Extent2D extent;
+
+    /// @brief Creates a new window.
+    ///
+    /// @param title Title text.
+    /// @param w Initial width.
+    /// @param h Initial height.
+    /// @param flags SDL window creation flags.
+    Window(char const*   title,
+           std::uint32_t w,
+           std::uint32_t h,
+           Uint32        flags = SDL_WINDOW_VULKAN);
+
+    ~Window() noexcept;
 };
+
+typedef std::unique_ptr<Window> WindowPtr;
 
 } // namespace isopunk
 

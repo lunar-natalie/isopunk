@@ -4,53 +4,56 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file utils.h
-/// @brief Miscellaneous engine utility functions.
+/// @brief Engine utility functions.
 
 #ifndef ISOPUNK_ENGINE_UTILS_H
 #define ISOPUNK_ENGINE_UTILS_H
 
+#include <sstream>
 #include <stdexcept>
 
 #include <SDL2/SDL.h>
 
 namespace isopunk {
 
-/// @brief Throws an exception with the specified message if the condition is
-/// `false`.
+/// @brief Assert a condition at runtime.
 ///
-/// @param condition Condition to assert as `true`.
-/// @param message Exception message string.
+/// @param cond Boolean condition.
+/// @param msg Message string.
 ///
-/// @throw std::runtime_error
-inline void runtime_assert(bool condition, const char* message)
+/// @throw std::runtime_error The asserted condition was false. The exception
+/// argument will contain the provided error message.
+inline void runtime_assert(bool cond, const char* msg)
 {
-    if (!condition) {
-        throw std::runtime_error(message);
+    if (!cond) {
+        throw std::runtime_error(msg);
     }
 }
 
-/// @brief Throws an exception with the last SDL error message string if the
-/// condition is `false`.
+/// @brief Assert the result of an SDL routine at runtime.
 ///
-/// @param condition Condition to assert as `true`.
+/// @param res Boolean condition.
 ///
-/// @throw std::runtime_error
-inline void sdl_assert(bool condition)
+/// @throw std::runtime_error The asserted condition was false. The exception
+/// argument will contain a message corresponding the last error that occurred
+/// on the current thread.
+inline void sdl_assert(bool cond)
 {
-    if (!condition) {
+    if (!cond) {
         throw std::runtime_error(SDL_GetError());
     }
 }
 
-/// @brief Throws an `std::runtime_error` with the last SDL error message if the
-/// condition is `SDL_FALSE`.
+/// @brief Assert the result of an SDL routine at runtime.
 ///
-/// @param condition Condition to assert as `SDL_TRUE`.
+/// @param res SDL_bool condition.
 ///
-/// @throw std::runtime_error
-inline void sdl_assert(SDL_bool condition)
+/// @throw std::runtime_error The asserted condition was false. The exception
+/// argument will contain a message corresponding the last error that occurred
+/// on the current thread.
+inline void sdl_assert(SDL_bool cond)
 {
-    if (condition == SDL_FALSE) {
+    if (cond == SDL_FALSE) {
         throw std::runtime_error(SDL_GetError());
     }
 }

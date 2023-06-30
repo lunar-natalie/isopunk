@@ -12,21 +12,21 @@
 
 #include <SDL2/SDL.h>
 
+#include <isopunk/engine/config.h>
 #include <isopunk/engine/renderer.h>
 #include <isopunk/engine/utils.h>
 
 using namespace isopunk;
 
-Engine::Engine(EngineConfig config)
-    : config{config}
+Engine::Engine(EngineConfig const conf)
+    : conf{conf}
 {
-    // Initialize SDL and create the main window.
-    Uint32 sdl_flags = SDL_INIT_VIDEO | SDL_INIT_EVENTS;
-    sdl_assert(SDL_Init(sdl_flags) == 0);
-    window =
-        std::make_unique<Window>(config.application_name.c_str(),
-                                 config.window_width, config.window_height);
-    renderer = std::make_unique<Renderer>(config);
+    sdl_assert(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) == 0);
+
+    wnd = std::make_unique<Window>(
+        conf.app_name.c_str(), conf.window_width, conf.window_height);
+
+    renderer = std::make_unique<Renderer>(conf, wnd);
 }
 
 Engine::~Engine() noexcept

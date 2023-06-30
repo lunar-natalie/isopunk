@@ -6,13 +6,17 @@
 /// @file renderer.cc
 /// @brief Vulkan renderer member definitions.
 
-#include "isopunk/engine/config.h"
 #include <isopunk/engine/renderer.h>
+
+#include <isopunk/engine/config.h>
+#include <isopunk/engine/window.h>
 
 using namespace isopunk;
 
-Renderer::Renderer(const EngineConfig& config)
+Renderer::Renderer(EngineConfig const& conf, WindowPtr& wnd)
 {
-    instance = create_instance(context, config);
-    physical_device = get_physical_devices(instance).first;
+    inst      = create_instance(conf, ctx, wnd);
+    phys_dev  = get_physical_devices(inst).first;
+    surface   = create_surface(wnd, inst);
+    queue_idx = get_queue_indices(phys_dev, surface);
 }

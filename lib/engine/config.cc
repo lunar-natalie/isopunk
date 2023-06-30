@@ -14,7 +14,7 @@
 
 using namespace isopunk;
 
-const EngineConfig Engine::default_config{.application_name = "IsoPunk",
-                                          .application_version = ENGINE_VERSION,
-                                          .window_width = 800,
-                                          .window_height = 600};
+const EngineConfig Engine::default_conf{.app_name      = "IsoPunk",
+                                        .app_version   = ENGINE_VERSION,
+                                        .window_width  = 800,
+                                        .window_height = 600};

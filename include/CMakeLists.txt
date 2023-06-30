@@ -16,7 +16,7 @@ target_sources(Headers PUBLIC FILE_SET HEADERS
     "${CMAKE_CURRENT_BINARY_DIR}/isopunk/version.h"
     "isopunk/engine.h"
     "isopunk/engine/config.h"
-    "isopunk/engine/defs.h"
+    "isopunk/engine/rdef.h"
     "isopunk/engine/renderer.h"
     "isopunk/engine/utils.h"
     "isopunk/engine/window.h"

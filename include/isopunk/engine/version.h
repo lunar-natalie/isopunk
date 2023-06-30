@@ -15,22 +15,16 @@
 
 namespace isopunk {
 
-/// @brief Software version information.
+/// @brief Software version structure.
 struct Version {
-    /// @brief Major version number.
     std::uint32_t major;
-
-    /// @brief Minor version number.
     std::uint32_t minor;
-
-    /// @brief Patch version number.
     std::uint32_t patch;
 
-    /// @brief Generates a Vulkan API version from the version numbers in
-    /// the object.
+    /// @brief Generates a Vulkan API version.
     ///
-    /// @return Vulkan API version value.
-    std::uint32_t vk_make_api_version() const
+    /// @return Vulkan API version.
+    std::uint32_t mk_vk_api_version() const
     {
         return VK_MAKE_API_VERSION(0, major, minor, patch);
     }

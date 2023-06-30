@@ -20,22 +20,39 @@
 
 namespace isopunk {
 
+/// @brief IsoPunk engine class.
+///
+/// Provides a graphical application runtime. Derived classes should publicly
+/// inherit this class.
 class Engine {
 protected:
-    Engine(EngineConfig config = default_config);
+    /// @brief Initializes an engine instance.
+    ///
+    /// @param conf Configuration properties.
+    ///
+    /// @throw std::runtime_error The engine has encountered a critical error
+    /// and the application should be terminated.
+    Engine(EngineConfig const conf = default_conf);
 
 public:
+    /// @brief Deinitializes the engine.
     virtual ~Engine() noexcept;
+
+    /// @brief Starts the main event loop.
     void start();
 
 protected:
-    const EngineConfig config;
-    static const EngineConfig default_config;
-    std::unique_ptr<Window> window;
+    const EngineConfig        conf;
+    static const EngineConfig default_conf;
+
+    std::unique_ptr<Window> wnd;
 
 private:
-    void draw();
     std::unique_ptr<Renderer> renderer;
+
+    /// @brief Draws graphical engine objects per frame in the main event loop
+    /// defined by both the engine and the implementation via the renderer.
+    void draw();
 };
 
 } // namespace isopunk

@@ -3,7 +3,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-/// @file init.cc
+/// @file game.cc
 /// @brief Game class member definitions.
 
 #include "game.h"
