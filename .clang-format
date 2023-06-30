@@ -2,6 +2,8 @@ Language: Cpp
 BasedOnStyle: LLVM
 
 AccessModifierOffset: -4
+AlignConsecutiveAssignments: Consecutive
+AlignConsecutiveDeclarations: Consecutive
 AllowShortEnumsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: None
 AlwaysBreakTemplateDeclarations: Yes
