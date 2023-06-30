@@ -10,6 +10,7 @@ add_library(Engine
   "renderer/phys_device.cc"
   "renderer/queues.cc"
   "renderer/surface.cc"
+  "renderer/command.cc"
   "run.cc"
   "window.cc"
 

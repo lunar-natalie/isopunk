@@ -9,6 +9,8 @@
 #ifndef ISOPUNK_ENGINE_RENDERER_H
 #define ISOPUNK_ENGINE_RENDERER_H
 
+#include <utility>
+
 #include <vulkan/vulkan.hpp>
 
 #include <isopunk/engine/config.h>
@@ -47,6 +49,8 @@ private:
     vkptr::QueueIndexPair queue_idx;
     vkptr::QueuePair      queues;
     vkptr::Device         dev;
+    vkptr::CommandPool    cmd_pool;
+    vkptr::CommandBuffer  cmd_buffer;
 
     static vkptr::Extensions get_extensions(WindowPtr&          wnd,
                                             vkr::Context const& ctx);
@@ -71,10 +75,17 @@ private:
                       vkptr::SurfaceKHR const&     surface);
 
     static vkptr::Device create_device(vkptr::PhysicalDevice&       phys_dev,
-                                       vkptr::QueueIndexPair const& idx);
+                                       vkptr::QueueIndexPair const& queue_idx);
 
     static vkptr::QueuePair get_queues(vkptr::QueueIndexPair const& idx,
                                        vkptr::Device&               dev);
+
+    static vkptr::CommandPool
+    create_command_pool(vkptr::Device&               dev,
+                        vkptr::QueueIndexPair const& queue_idx);
+
+    static vkptr::CommandBuffer
+    allocate_command_buffer(vkptr::Device& dev, vkptr::CommandPool& pool);
 
 #ifndef NDEBUG
     static VKAPI_ATTR VkBool32 VKAPI_CALL debug_messenger_callback(
