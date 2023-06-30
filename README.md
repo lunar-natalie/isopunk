@@ -63,7 +63,7 @@
 - Cppcheck
 - GDB
 
-**TODO**: Manage
+**TODO**: Manage dependencies
 
 # Development
 
@@ -161,35 +161,37 @@ written in Pascal case.
 
 ## File comments
 
+Note: Text surrounded by braces in the format guides should be substituted with an appropriate value.
+
 **C++**
 
-- Documented source files should start with a comment in the following format:
+Documented source files should start with a comment in the following format:
 
 ```
-// PROJECT COMPONENT
-// Copyright (c) 2023 NAME <EMAIL>
+// {PROJECT_COMPONENT}
+// Copyright (c) {YEAR} {NAME} <{EMAIL}>
 //
-// SPDX-License-Identifier: LICENSE-IDENTIFIER
+// SPDX-License-Identifier: {LICENSE_IDENTIFIER}
 
-/// @file FILENAME
-/// @brief BRIEF DESCRIPTION
+/// @file {FILENAME}
+/// @brief {BRIEF_DESCRIPTION}
 ```
 
-- Non-documented source files should start with a comment in the following
-  format:
+Non-documented source files should start with a comment in the following
+format:
 
 ```
-// PROJECT COMPONENT
-// Copyright (c) 2023 NAME <EMAIL>
+// {PROJECT_COMPONENT}
+// Copyright (c) {YEAR} {NAME} <{EMAIL}>
 //
-// SPDX-License-Identifier: LICENSE-IDENTIFIER
+// SPDX-License-Identifier: {LICENSE_IDENTIFIER}
 //
-// BRIEF DESCRIPTION
+// BRIEF_DESCRIPTION
 ```
 
 **CMake**
 
-- Files should start with `## A SHORT DESCRIPTION`.
+Files should start in the format `## {SHORT_DESCRIPTION}`.
 
 ## Documentation comments
 
