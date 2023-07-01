@@ -64,7 +64,7 @@ private:
     create_debug_messenger(vkptr::Instance& inst);
 #endif
 
-    static std::pair<vkptr::PhysicalDevice, vkptr::PhysicalDevices>
+    static vkx::PhysicalDevices
     get_physical_devices(vkptr::Instance const& inst);
 
     static vkptr::SurfaceKHR create_surface(WindowPtr&       wnd,

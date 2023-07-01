@@ -8,6 +8,8 @@
 
 #include <isopunk/engine/renderer.h>
 
+#include <memory>
+
 #include <isopunk/engine/config.h>
 #include <isopunk/engine/window.h>
 
@@ -20,7 +22,8 @@ Renderer::Renderer(EngineConfig const& conf, WindowPtr& wnd)
 #ifndef NDEBUG
     dbg_messenger = create_debug_messenger(inst);
 #endif
-    phys_dev   = get_physical_devices(inst).first;
+    phys_dev = std::make_unique<vkr ::PhysicalDevice>(
+        get_physical_devices(inst).front());
     surface    = create_surface(wnd, inst);
     queue_idx  = get_queue_indices(phys_dev, surface);
     dev        = create_device(phys_dev, queue_idx);
