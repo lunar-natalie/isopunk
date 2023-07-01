@@ -47,7 +47,7 @@
 
 ## Development environment
 
-- C++20 toolchain
+- C++20 toolchain (Clang 14 or newer)
 - CMake 3.21 or newer
 - Boost
 - SDL2
