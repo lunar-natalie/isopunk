@@ -15,7 +15,7 @@ jobs:
       - name: Cache dependencies
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: clang libsdl2-dev libvulkan-dev libglm-dev cppcheck clang-format
+          packages: clang libsdl2-dev libvulkan-dev libglm-dev cppcheck clang-format glslang-tools
           version: 1.0
           execute_install_scripts: true
 
