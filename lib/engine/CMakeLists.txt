@@ -5,12 +5,12 @@ add_library(Engine
   "draw.cc"
   "engine.cc"
   "renderer.cc"
+  "renderer/command.cc"
   "renderer/device.cc"
   "renderer/instance.cc"
   "renderer/phys_device.cc"
   "renderer/queues.cc"
   "renderer/surface.cc"
-  "renderer/command.cc"
   "run.cc"
   "window.cc"
 
