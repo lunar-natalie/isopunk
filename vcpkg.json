@@ -1,0 +1,15 @@
+{
+  "dependencies": [
+    {
+      "name": "sdl2",
+      "features": [
+        "vulkan"
+      ]
+    },
+    "vulkan",
+    "glslang",
+    "glm",
+    "boost-program-options",
+    "boost-test"
+  ]
+}
