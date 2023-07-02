@@ -14,6 +14,9 @@ tab_width = 2
 [*.yaml]
 tab_width = 2
 
+[*.json]
+tab_width = 2
+
 [{CMakeLists.txt,*.cmake{,.in}}]
 tab_width = 2
 
