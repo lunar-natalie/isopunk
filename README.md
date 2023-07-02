@@ -43,27 +43,26 @@
 - Vulkan 1.0.24 or newer implementation
 - Wayland or X11 (Linux)
 
-**TODO**: Package
-
 ## Development environment
 
+- Git
 - C++20 toolchain (Clang 14 or newer)
 - CMake 3.21 or newer
-- Boost
-- SDL2
-- GLM
-- Vulkan 1.0.24 or newer SDK
-- `glslc`
-- `glslang-validator`
 
-**Optional**
+### Installation
+
+Clone this repository. From the cloned directory, run
+
+```shell
+git submodule update --init --recursive
+```
+
+**Optional additional packages**
 
 - Doxygen
 - ClangFormat
 - Cppcheck
-- GDB
-
-**TODO**: Manage dependencies
+- LLDB/GDB
 
 # Development
 
@@ -104,12 +103,12 @@ The provided commands can be run from the Command Palette (default shortcut:
 - Debug build type
   ```shell
   mkdir -p build && \
-  cmake -DCMAKE_BUILD_TYPE=Debug -S. -Bbuild
+  cmake -DCMAKE_TOOLCHAIN_FILE:STRING=./vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug -S. -Bbuild
   ```
 - Release build type
   ```shell
   mkdir -p build && \
-  cmake -S. -Bbuild
+  cmake -DCMAKE_TOOLCHAIN_FILE:STRING=./vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Release -S. -Bbuild
   ```
 
 **Build**
