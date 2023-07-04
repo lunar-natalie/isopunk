@@ -70,6 +70,14 @@
     "typeindex": "cpp",
     "typeinfo": "cpp",
     "variant": "cpp",
-    "codecvt": "cpp"
+    "codecvt": "cpp",
+    "*.ipp": "cpp",
+    "csignal": "cpp",
+    "chrono": "cpp",
+    "unordered_set": "cpp",
+    "source_location": "cpp",
+    "rope": "cpp",
+    "fstream": "cpp",
+    "valarray": "cpp"
   }
 }

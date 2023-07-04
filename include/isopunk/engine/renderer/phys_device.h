@@ -4,27 +4,42 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file phys_device.h
-/// @brief Inline Vulkan physical device utilities.
+/// @brief Vulkan physical device wrapper classes.
 
 #ifndef ISOPUNK_ENGINE_RENDERER_PHYS_DEVICE_H
 #define ISOPUNK_ENGINE_RENDERER_PHYS_DEVICE_H
 
 #include <memory>
+#include <vector>
 
 #include <isopunk/engine/rdef.h>
-#include <isopunk/engine/renderer.h>
 
 namespace isopunk {
-namespace utils {
 
-inline vkptr::PhysicalDevice
-create_physical_device(vkptr::Instance const& inst,
-                       vkr::PhysicalDevice&   phys_dev)
-{
-    return std::make_unique<vkr::PhysicalDevice>(*inst, *phys_dev);
-}
+namespace vkx {
 
-} // namespace utils
+/// @brief Vulkan physical device vector wrapper.
+struct PhysicalDevices : public std::vector<vkr::PhysicalDevice> {
+    PhysicalDevices(std::vector<vkr::PhysicalDevice>& data)
+        : std::vector<vkr::PhysicalDevice>(data)
+    {
+    }
+
+    /// @return std::unique_ptr to the first physical device.
+    vkptr::PhysicalDevice pfront()
+    {
+        return std::make_unique<vkr::PhysicalDevice>(front());
+    }
+};
+
+} // namespace vkx
+
+namespace vkptr {
+
+typedef std::shared_ptr<vkx::PhysicalDevices> PhysicalDevices;
+
+} // namespace vkptr
+
 } // namespace isopunk
 
 #endif // ISOPUNK_ENGINE_RENDERER_PHYS_DEVICE_H

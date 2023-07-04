@@ -12,25 +12,9 @@
 #include <cstdint>
 #include <memory>
 
-#include <vulkan/vulkan_raii.hpp>
-
 #include <isopunk/engine/rdef.h>
 
 namespace isopunk {
-
-namespace vkx {
-
-struct QueueIndexPair;
-struct QueuePair;
-
-} // namespace vkx
-
-namespace vkptr {
-
-typedef std::shared_ptr<vkx::QueueIndexPair> QueueIndexPair;
-typedef std::shared_ptr<vkx::QueuePair>      QueuePair;
-
-} // namespace vkptr
 
 namespace vkx {
 
@@ -47,14 +31,20 @@ struct QueuePair {
     vkr::Queue gfx;     /// @brief Graphics queue
     vkr::Queue present; /// @brief Present queue
 
-    QueuePair(vkptr::QueueIndexPair const& idx, vkptr::Device const& dev)
-        : gfx{*dev, idx->gfx, 0},
-          present{*dev, idx->present, 0}
+    QueuePair(QueueIndexPair const& idx, vkptr::Device const& dev)
+        : gfx{*dev, idx.gfx, 0},
+          present{*dev, idx.present, 0}
     {
     }
 };
 
 } // namespace vkx
+
+namespace vkptr {
+
+typedef std::shared_ptr<vkx::QueuePair> QueuePair;
+
+} // namespace vkptr
 
 } // namespace isopunk
 

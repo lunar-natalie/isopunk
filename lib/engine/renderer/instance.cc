@@ -23,8 +23,8 @@
 
 using namespace isopunk;
 
-vkptr::Extensions Renderer::get_extensions(WindowPtr&          wnd,
-                                           vkr::Context const& ctx)
+vkx::Extensions Renderer::get_extensions(WindowPtr&          wnd,
+                                         vkr::Context const& ctx)
 {
     vkx::Extensions ext;
     unsigned int    count;
@@ -56,12 +56,12 @@ vkptr::Extensions Renderer::get_extensions(WindowPtr&          wnd,
             "extension " VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
     }
 
-    return std::make_shared<vkx::Extensions>(ext);
+    return ext;
 }
 
-vkptr::Instance Renderer::create_instance(EngineConfig const&      config,
-                                          vkr::Context&            ctx,
-                                          vkptr::Extensions const& ext)
+vkptr::Instance Renderer::create_instance(EngineConfig const&    config,
+                                          vkr::Context&          ctx,
+                                          vkx::Extensions const& ext)
 {
     vk::ApplicationInfo app_info{
         .pApplicationName   = config.app_name.c_str(),
@@ -75,8 +75,8 @@ vkptr::Instance Renderer::create_instance(EngineConfig const&      config,
             ctx,
             vk::InstanceCreateInfo{.pApplicationInfo = &app_info,
                                    .enabledExtensionCount =
-                                       static_cast<std::uint32_t>(ext->size()),
-                                   .ppEnabledExtensionNames = ext->data()});
+                                       static_cast<std::uint32_t>(ext.size()),
+                                   .ppEnabledExtensionNames = ext.data()});
     }
     catch (vk::SystemError& e) {
         throw std::runtime_error(e.what());

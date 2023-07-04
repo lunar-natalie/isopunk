@@ -18,11 +18,11 @@
 using namespace isopunk;
 
 vkptr::CommandPool
-Renderer::create_command_pool(vkptr::Device&               dev,
-                              vkptr::QueueIndexPair const& queue_idx)
+Renderer::create_command_pool(vkptr::Device&             dev,
+                              vkx::QueueIndexPair const& queue_idx)
 {
     return std::make_unique<vkr::CommandPool>(
-        dev->createCommandPool({.queueFamilyIndex = queue_idx->gfx}));
+        dev->createCommandPool({.queueFamilyIndex = queue_idx.gfx}));
 }
 
 vkptr::CommandBuffer Renderer::allocate_command_buffer(vkptr::Device&      dev,

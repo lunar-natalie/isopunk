@@ -11,7 +11,6 @@
 #include <cstdint>
 #include <iterator>
 #include <limits>
-#include <memory>
 #include <stdexcept>
 
 #include <vulkan/vulkan.hpp>
@@ -22,7 +21,7 @@
 
 using namespace isopunk;
 
-vkptr::QueueIndexPair
+vkx::QueueIndexPair
 Renderer::get_queue_indices(vkptr::PhysicalDevice const& phys_dev,
                             vkptr::SurfaceKHR const&     surface)
 {
@@ -48,7 +47,7 @@ Renderer::get_queue_indices(vkptr::PhysicalDevice const& phys_dev,
         if (phys_dev->getSurfaceSupportKHR(queue_idx.gfx, **surface)) {
             queue_idx.present = queue_idx.gfx;
             // Return using single queue index
-            return std::make_shared<vkx::QueueIndexPair>(queue_idx);
+            return queue_idx;
         }
 
         // Find next index supporting present
@@ -57,7 +56,7 @@ Renderer::get_queue_indices(vkptr::PhysicalDevice const& phys_dev,
                                                **surface)) {
                 queue_idx.present = i;
                 // Return using separate graphics and queue index
-                return std::make_shared<vkx::QueueIndexPair>(queue_idx);
+                return queue_idx;
             }
         }
     }
@@ -65,8 +64,8 @@ Renderer::get_queue_indices(vkptr::PhysicalDevice const& phys_dev,
     throw std::runtime_error("Failed to accquire queue family indices");
 }
 
-vkptr::QueuePair Renderer::get_queues(vkptr::QueueIndexPair const& idx,
-                                      vkptr::Device&               dev)
+vkptr::QueuePair Renderer::create_queues(vkx::QueueIndexPair const& idx,
+                                         vkptr::Device const&       dev)
 {
     return std::make_shared<vkx::QueuePair>(idx, dev);
 }

@@ -16,12 +16,12 @@
 
 using namespace isopunk;
 
-vkptr::Device Renderer::create_device(vkptr::PhysicalDevice&       phys_dev,
-                                      vkptr::QueueIndexPair const& queue_idx)
+vkptr::Device Renderer::create_device(vkptr::PhysicalDevice const& phys_dev,
+                                      vkx::QueueIndexPair const&   queue_idx)
 {
 
     float                     queue_priorities[] = {0.0f};
-    vk::DeviceQueueCreateInfo gfx_info = {.queueFamilyIndex = queue_idx->gfx,
+    vk::DeviceQueueCreateInfo gfx_info = {.queueFamilyIndex = queue_idx.gfx,
                                           .queueCount       = 1,
                                           .pQueuePriorities = queue_priorities};
     return std::make_unique<vkr::Device>(

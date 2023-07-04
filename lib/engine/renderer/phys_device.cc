@@ -9,18 +9,19 @@
 #include <isopunk/engine/renderer.h>
 
 #include <memory>
-#include <stdexcept>
 
 #include <vulkan/vulkan.hpp>
 
 #include <isopunk/engine/rdef.h>
+#include <isopunk/engine/renderer/phys_device.h>
 #include <isopunk/engine/utils.h>
 
 using namespace isopunk;
 
-vkx::PhysicalDevices Renderer::get_physical_devices(vkptr::Instance const& inst)
+vkptr::PhysicalDevices
+Renderer::get_physical_devices(vkptr::Instance const& inst)
 {
     auto phys_devs = inst->enumeratePhysicalDevices();
     runtime_assert(phys_devs.size() > 0, "No physical devices found");
-    return phys_devs;
+    return std::make_shared<vkx::PhysicalDevices>(phys_devs);
 }

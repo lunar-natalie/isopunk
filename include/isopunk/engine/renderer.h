@@ -15,6 +15,7 @@
 
 #include <isopunk/engine/config.h>
 #include <isopunk/engine/rdef.h>
+#include <isopunk/engine/renderer/phys_device.h>
 #include <isopunk/engine/renderer/queues.h>
 #include <isopunk/engine/window.h>
 
@@ -38,51 +39,55 @@ public:
     Renderer(EngineConfig const& conf, WindowPtr& wnd);
 
 private:
-    vkr::Context      ctx;
-    vkptr::Extensions ext;
-    vkptr::Instance   inst;
+    vkr::Context    ctx;
+    vkx::Extensions ext;
+    vkptr::Instance inst;
 #ifndef NDEBUG
     vkptr::DebugUtilsMessengerEXT dbg_messenger;
 #endif
-    vkptr::PhysicalDevice phys_dev;
-    vkptr::SurfaceKHR     surface;
-    vkptr::QueueIndexPair queue_idx;
-    vkptr::QueuePair      queues;
-    vkptr::Device         dev;
-    vkptr::CommandPool    cmd_pool;
-    vkptr::CommandBuffer  cmd_buffer;
+    vkptr::PhysicalDevices phys_devs;
+    vkptr::PhysicalDevice  phys_dev;
+    vkptr::SurfaceKHR      surface;
+    vkx::QueueIndexPair    queue_idx;
+    vkptr::QueuePair       queues;
+    vkptr::Device          dev;
+    vkptr::CommandPool     cmd_pool;
+    vkptr::CommandBuffer   cmd_buffer;
 
-    static vkptr::Extensions get_extensions(WindowPtr&          wnd,
-                                            vkr::Context const& ctx);
+    static vkx::Extensions get_extensions(WindowPtr&          wnd,
+                                          vkr::Context const& ctx);
 
-    static vkptr::Instance create_instance(EngineConfig const&      config,
-                                           vkr::Context&            ctx,
-                                           vkptr::Extensions const& ext);
+    static vkptr::Instance create_instance(EngineConfig const&    config,
+                                           vkr::Context&          ctx,
+                                           vkx::Extensions const& ext);
 
 #ifndef NDEBUG
     static vkptr::DebugUtilsMessengerEXT
     create_debug_messenger(vkptr::Instance& inst);
 #endif
 
-    static vkx::PhysicalDevices
+    static vkptr::PhysicalDevices
     get_physical_devices(vkptr::Instance const& inst);
 
     static vkptr::SurfaceKHR create_surface(WindowPtr&       wnd,
                                             vkptr::Instance& inst);
 
-    static vkptr::QueueIndexPair
+    static vkx::QueueIndexPair
     get_queue_indices(vkptr::PhysicalDevice const& phys_dev,
                       vkptr::SurfaceKHR const&     surface);
 
-    static vkptr::Device create_device(vkptr::PhysicalDevice&       phys_dev,
-                                       vkptr::QueueIndexPair const& queue_idx);
+    static vkptr::Device create_device(vkptr::PhysicalDevice const& phys_dev,
+                                       vkx::QueueIndexPair const&   queue_idx);
 
-    static vkptr::QueuePair get_queues(vkptr::QueueIndexPair const& idx,
-                                       vkptr::Device&               dev);
+    static vkx::QueuePair get_queues(vkx::QueueIndexPair const& idx,
+                                     vkptr::Device&             dev);
+
+    static vkptr::QueuePair create_queues(vkx::QueueIndexPair const& idx,
+                                          vkptr::Device const&       dev);
 
     static vkptr::CommandPool
-    create_command_pool(vkptr::Device&               dev,
-                        vkptr::QueueIndexPair const& queue_idx);
+    create_command_pool(vkptr::Device&             dev,
+                        vkx::QueueIndexPair const& queue_idx);
 
     static vkptr::CommandBuffer
     allocate_command_buffer(vkptr::Device& dev, vkptr::CommandPool& pool);
