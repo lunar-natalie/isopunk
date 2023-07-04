@@ -15,9 +15,12 @@ jobs:
       - name: Cache dependencies
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: clang libboost-program-options-dev libboost-test-dev libsdl2-dev libvulkan-dev libglm-dev cppcheck clang-format glslang-tools
+          packages: clang libsdl2-dev libvulkan-dev libglm-dev cppcheck clang-format glslang-tools
           version: 1.0
           execute_install_scripts: true
+
+        # - name: Install additional dependencies
+        run: sudo apt-get install -y libboost-program-options-dev libboost-test-dev
 
       - name: Checkout
         uses: actions/checkout@v3
