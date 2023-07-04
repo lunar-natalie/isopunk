@@ -19,7 +19,7 @@ jobs:
           version: 1.0
           execute_install_scripts: true
 
-        # - name: Install additional dependencies
+      - name: Install additional dependencies
         run: sudo apt-get install -y libboost-program-options-dev libboost-test-dev
 
       - name: Checkout
