@@ -19,17 +19,22 @@ namespace isopunk {
 namespace vkx {
 
 /// @brief Vulkan physical device vector wrapper.
-struct PhysicalDevices : public std::vector<vkr::PhysicalDevice> {
-    PhysicalDevices(std::vector<vkr::PhysicalDevice>& data)
-        : std::vector<vkr::PhysicalDevice>(data)
+class PhysicalDevices : public std::vector<vkr::PhysicalDevice> {
+public:
+    PhysicalDevices(vkptr::Instance const& inst)
+        : std::vector<vkr::PhysicalDevice>(inst->enumeratePhysicalDevices()),
+          inst{inst}
     {
     }
 
     /// @return std::unique_ptr to the first physical device.
     vkptr::PhysicalDevice pfront()
     {
-        return std::make_unique<vkr::PhysicalDevice>(front());
+        return std::make_unique<vkr::PhysicalDevice>(*inst, *front());
     }
+
+private:
+    vkptr::Instance const& inst;
 };
 
 } // namespace vkx

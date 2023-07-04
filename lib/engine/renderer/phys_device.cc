@@ -21,7 +21,7 @@ using namespace isopunk;
 vkptr::PhysicalDevices
 Renderer::get_physical_devices(vkptr::Instance const& inst)
 {
-    auto phys_devs = inst->enumeratePhysicalDevices();
+    auto phys_devs = vkx::PhysicalDevices(inst);
     runtime_assert(phys_devs.size() > 0, "No physical devices found");
     return std::make_shared<vkx::PhysicalDevices>(phys_devs);
 }
