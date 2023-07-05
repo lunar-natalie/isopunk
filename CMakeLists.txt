@@ -51,7 +51,7 @@ find_package(Vulkan 1.0.24 REQUIRED)
 
 # Boost
 # Portable multi-purpose C++ source libraries.
-find_package(Boost
+find_package(Boost CONFIG
   COMPONENTS
     program_options     # Command-line and config-based option parsing
     unit_test_framework # Framework for unit testing project components
