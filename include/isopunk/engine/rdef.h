@@ -23,13 +23,6 @@ using namespace vk::raii;
 
 } // namespace vkr
 
-/// @brief Vulkan type extensions.
-namespace vkx {
-
-typedef std::vector<const char*> Extensions;
-
-} // namespace vkx
-
 /// @brief Movable pointer types for Vulkan objects.
 namespace vkptr {
 

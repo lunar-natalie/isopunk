@@ -11,6 +11,7 @@
 #include <cstdint>
 #include <memory>
 #include <stdexcept>
+#include <vector>
 
 #include <SDL2/SDL_vulkan.h>
 #include <vulkan/vulkan.hpp>
@@ -23,22 +24,24 @@
 
 using namespace isopunk;
 
-vkx::Extensions Renderer::get_instance_extensions(WindowPtr&          wnd,
-                                                  vkr::Context const& ctx)
+std::vector<const char*>
+Renderer::get_instance_extensions(WindowPtr& wnd, vkr::Context const& ctx)
 {
-    vkx::Extensions exts;
-    unsigned int    count;
+    std::vector<const char*> exts;
+    unsigned int             sdl_ext_count;
 
-    // Enumerate extensions
-    sdl_assert(SDL_Vulkan_GetInstanceExtensions(wnd->data, &count, nullptr));
+    // Enumerate Vulkan extensions supported by SDL
+    sdl_assert(
+        SDL_Vulkan_GetInstanceExtensions(wnd->data, &sdl_ext_count, nullptr));
 
     // Allocate
-    exts = vkx::Extensions(count);
+    exts = std::vector<const char*>(sdl_ext_count);
 
     // Retrieve extension names
-    sdl_assert(
-        SDL_Vulkan_GetInstanceExtensions(wnd->data, &count, exts.data()));
+    sdl_assert(SDL_Vulkan_GetInstanceExtensions(
+        wnd->data, &sdl_ext_count, exts.data()));
 
+    // Additional extensions
 #ifndef NDEBUG
     exts.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
 #endif
@@ -47,8 +50,8 @@ vkx::Extensions Renderer::get_instance_extensions(WindowPtr&          wnd,
         ctx.enumerateInstanceExtensionProperties();
 
     auto prop_itr = std::find_if(
-        props.begin(), props.end(), [](vk::ExtensionProperties const& ep) {
-            return strcmp(ep.extensionName, VK_EXT_DEBUG_UTILS_EXTENSION_NAME)
+        props.begin(), props.end(), [](vk::ExtensionProperties const& p) {
+            return strcmp(p.extensionName, VK_EXT_DEBUG_UTILS_EXTENSION_NAME)
                    == 0;
         });
     if (prop_itr == props.end()) {

@@ -59,8 +59,8 @@ private:
                                            WindowPtr&          wnd,
                                            vkr::Context&       ctx);
 
-    static vkx::Extensions get_instance_extensions(WindowPtr&          wnd,
-                                                   vkr::Context const& ctx);
+    static std::vector<const char*>
+    get_instance_extensions(WindowPtr& wnd, vkr::Context const& ctx);
 
 #ifndef NDEBUG
     static vkptr::DebugUtilsMessengerEXT
