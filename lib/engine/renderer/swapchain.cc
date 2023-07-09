@@ -38,7 +38,11 @@ Renderer::create_swapchain(vkptr::PhysicalDevice const& phys_dev,
         .presentMode      = surface->present_mode(),
         .clipped          = true};
 
-    if (queue_idx.equal()) {
+    if (!queue_idx.equal()) {
+        // If the graphics and present queues are from different queue families,
+        // we either have to explicitly transfer
+        // ownership of images between the queues, or we have to create the
+        // swapchain with imageSharingMode as VK_SHARING_MODE_CONCURRENT
         auto v_idx                 = queue_idx.to_vector();
         info.imageSharingMode      = vk::SharingMode::eConcurrent;
         info.queueFamilyIndexCount = v_idx.size();
