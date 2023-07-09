@@ -17,6 +17,7 @@
 #include <isopunk/engine/rdef.h>
 #include <isopunk/engine/renderer/phys_device.h>
 #include <isopunk/engine/renderer/queues.h>
+#include <isopunk/engine/renderer/surface.h>
 #include <isopunk/engine/window.h>
 
 namespace isopunk {
@@ -40,26 +41,26 @@ public:
 
 private:
     vkr::Context    ctx;
-    vkx::Extensions ext;
     vkptr::Instance inst;
 #ifndef NDEBUG
     vkptr::DebugUtilsMessengerEXT dbg_messenger;
 #endif
     vkptr::PhysicalDevices phys_devs;
     vkptr::PhysicalDevice  phys_dev;
-    vkptr::SurfaceKHR      surface;
+    vkptr::Surface         surface;
     vkx::QueueIndexPair    queue_idx;
     vkptr::QueuePair       queues;
     vkptr::Device          dev;
     vkptr::CommandPool     cmd_pool;
     vkptr::CommandBuffer   cmd_buffer;
+    vkptr::SwapchainKHR    swapchain;
 
-    static vkx::Extensions get_extensions(WindowPtr&          wnd,
-                                          vkr::Context const& ctx);
+    static vkptr::Instance create_instance(EngineConfig const& config,
+                                           WindowPtr&          wnd,
+                                           vkr::Context&       ctx);
 
-    static vkptr::Instance create_instance(EngineConfig const&    config,
-                                           vkr::Context&          ctx,
-                                           vkx::Extensions const& ext);
+    static vkx::Extensions get_instance_extensions(WindowPtr&          wnd,
+                                                   vkr::Context const& ctx);
 
 #ifndef NDEBUG
     static vkptr::DebugUtilsMessengerEXT
@@ -69,12 +70,13 @@ private:
     static vkptr::PhysicalDevices
     get_physical_devices(vkptr::Instance const& inst);
 
-    static vkptr::SurfaceKHR create_surface(WindowPtr&       wnd,
-                                            vkptr::Instance& inst);
+    static vkptr::Surface create_surface(WindowPtr&                   wnd,
+                                         vkptr::Instance&             inst,
+                                         vkptr::PhysicalDevice const& phys_dev);
 
     static vkx::QueueIndexPair
     get_queue_indices(vkptr::PhysicalDevice const& phys_dev,
-                      vkptr::SurfaceKHR const&     surface);
+                      vkptr::Surface const&        surface);
 
     static vkptr::Device create_device(vkptr::PhysicalDevice const& phys_dev,
                                        vkx::QueueIndexPair const&   queue_idx);
@@ -91,6 +93,12 @@ private:
 
     static vkptr::CommandBuffer
     allocate_command_buffer(vkptr::Device& dev, vkptr::CommandPool& pool);
+
+    static vkptr::SwapchainKHR
+    create_swapchain(vkptr::PhysicalDevice const& phys_dev,
+                     vkptr::Device const&         dev,
+                     vkptr::Surface const&        surface,
+                     vkx::QueueIndexPair const&   queue_idx);
 
 #ifndef NDEBUG
     static VKAPI_ATTR VkBool32 VKAPI_CALL debug_messenger_callback(

@@ -17,13 +17,14 @@
 
 #include <isopunk/engine/rdef.h>
 #include <isopunk/engine/renderer/queues.h>
+#include <isopunk/engine/renderer/surface.h>
 #include <isopunk/engine/utils.h>
 
 using namespace isopunk;
 
 vkx::QueueIndexPair
 Renderer::get_queue_indices(vkptr::PhysicalDevice const& phys_dev,
-                            vkptr::SurfaceKHR const&     surface)
+                            vkptr::Surface const&        surface)
 {
     vkx::QueueIndexPair                                    queue_idx;
     std::vector<vk::QueueFamilyProperties>::const_iterator prop_itr;

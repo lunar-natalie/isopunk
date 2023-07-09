@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file phys_device.h
-/// @brief Vulkan physical device wrapper classes.
+/// @brief Vulkan physical device utility header.
 
 #ifndef ISOPUNK_ENGINE_RENDERER_PHYS_DEVICE_H
 #define ISOPUNK_ENGINE_RENDERER_PHYS_DEVICE_H

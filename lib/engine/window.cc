@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file window.cc
-/// @brief Window wrapper implementation.
+/// @brief SDL window wrapper implementation.
 
 #include <isopunk/engine/window.h>
 

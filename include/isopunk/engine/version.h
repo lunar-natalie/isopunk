@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file version.h
-/// @brief Software version structure.
+/// @brief Release version utility definitions.
 
 #ifndef ISOPUNK_ENGINE_VERSION_H
 #define ISOPUNK_ENGINE_VERSION_H

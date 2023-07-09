@@ -15,17 +15,17 @@ using namespace isopunk;
 
 Renderer::Renderer(EngineConfig const& conf, WindowPtr& wnd)
 {
-    ext  = get_extensions(wnd, ctx);
-    inst = create_instance(conf, ctx, ext);
+    inst = create_instance(conf, wnd, ctx);
 #ifndef NDEBUG
     dbg_messenger = create_debug_messenger(inst);
 #endif
     phys_devs  = get_physical_devices(inst);
     phys_dev   = phys_devs->pfront();
-    surface    = create_surface(wnd, inst);
+    surface    = create_surface(wnd, inst, phys_dev);
     queue_idx  = get_queue_indices(phys_dev, surface);
     dev        = create_device(phys_dev, queue_idx);
     queues     = create_queues(queue_idx, dev);
     cmd_pool   = create_command_pool(dev, queue_idx);
     cmd_buffer = allocate_command_buffer(dev, cmd_pool);
+    swapchain  = create_swapchain(phys_dev, dev, surface, queue_idx);
 }

@@ -11,6 +11,7 @@ add_library(Engine
   "renderer/phys_device.cc"
   "renderer/queues.cc"
   "renderer/surface.cc"
+  "renderer/swapchain.cc"
   "run.cc"
   "window.cc"
 

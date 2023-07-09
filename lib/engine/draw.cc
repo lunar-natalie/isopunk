@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file draw.cc
-/// @brief Top level engine drawing routines.
+/// @brief Implementation of top level engine drawing routines.
 
 #include <isopunk/engine.h>
 

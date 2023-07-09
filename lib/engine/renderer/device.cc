@@ -19,13 +19,18 @@ using namespace isopunk;
 vkptr::Device Renderer::create_device(vkptr::PhysicalDevice const& phys_dev,
                                       vkx::QueueIndexPair const&   queue_idx)
 {
-
     float                     queue_priorities[] = {0.0f};
     vk::DeviceQueueCreateInfo gfx_info = {.queueFamilyIndex = queue_idx.gfx,
                                           .queueCount       = 1,
                                           .pQueuePriorities = queue_priorities};
-    return std::make_unique<vkr::Device>(
-        *phys_dev,
-        vk::DeviceCreateInfo{.queueCreateInfoCount = 1,
-                             .pQueueCreateInfos    = &gfx_info});
+
+    std::vector<char const*> exts{VK_KHR_SWAPCHAIN_EXTENSION_NAME};
+    auto                     features = phys_dev->getFeatures();
+
+    return std::make_unique<vkr::Device>(phys_dev->createDevice(
+        {.queueCreateInfoCount    = 1,
+         .pQueueCreateInfos       = &gfx_info,
+         .enabledExtensionCount   = static_cast<std::uint32_t>(exts.size()),
+         .ppEnabledExtensionNames = exts.data(),
+         .pEnabledFeatures        = &features}));
 }

@@ -4,13 +4,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file queues.h
-/// @brief Vulkan queue definitions.
+/// @brief Vulkan queue utility header.
 
 #ifndef ISOPUNK_ENGINE_RENDERER_QUEUES_H
 #define ISOPUNK_ENGINE_RENDERER_QUEUES_H
 
 #include <cstdint>
 #include <memory>
+#include <vector>
 
 #include <isopunk/engine/rdef.h>
 
@@ -23,6 +24,16 @@ namespace vkx {
 struct QueueIndexPair {
     std::uint32_t gfx;     /// @brief Graphics queue index
     std::uint32_t present; /// @brief Present queue index
+
+    bool equal() const
+    {
+        return gfx == present;
+    }
+
+    std::vector<std::uint32_t> to_vector() const
+    {
+        return std::vector(gfx, present);
+    }
 };
 
 /// @brief Holds a queue object for each queue family for a given physical

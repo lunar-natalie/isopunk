@@ -23,23 +23,24 @@
 
 using namespace isopunk;
 
-vkx::Extensions Renderer::get_extensions(WindowPtr&          wnd,
-                                         vkr::Context const& ctx)
+vkx::Extensions Renderer::get_instance_extensions(WindowPtr&          wnd,
+                                                  vkr::Context const& ctx)
 {
-    vkx::Extensions ext;
+    vkx::Extensions exts;
     unsigned int    count;
 
     // Enumerate extensions
     sdl_assert(SDL_Vulkan_GetInstanceExtensions(wnd->data, &count, nullptr));
 
     // Allocate
-    ext = vkx::Extensions(count);
+    exts = vkx::Extensions(count);
 
     // Retrieve extension names
-    sdl_assert(SDL_Vulkan_GetInstanceExtensions(wnd->data, &count, ext.data()));
+    sdl_assert(
+        SDL_Vulkan_GetInstanceExtensions(wnd->data, &count, exts.data()));
 
 #ifndef NDEBUG
-    ext.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
+    exts.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
 #endif
 
     std::vector<vk::ExtensionProperties> props =
@@ -56,12 +57,12 @@ vkx::Extensions Renderer::get_extensions(WindowPtr&          wnd,
             "extension " VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
     }
 
-    return ext;
+    return exts;
 }
 
-vkptr::Instance Renderer::create_instance(EngineConfig const&    config,
-                                          vkr::Context&          ctx,
-                                          vkx::Extensions const& ext)
+vkptr::Instance Renderer::create_instance(EngineConfig const& config,
+                                          WindowPtr&          wnd,
+                                          vkr::Context&       ctx)
 {
     vk::ApplicationInfo app_info{
         .pApplicationName   = config.app_name.c_str(),
@@ -70,13 +71,15 @@ vkptr::Instance Renderer::create_instance(EngineConfig const&    config,
         .engineVersion      = ENGINE_VERSION.mk_vk_api_version(),
         .apiVersion         = VK_API_VERSION_1_0};
 
+    auto exts = get_instance_extensions(wnd, ctx);
+
     try {
         return std::make_unique<vkr::Instance>(
             ctx,
             vk::InstanceCreateInfo{.pApplicationInfo = &app_info,
                                    .enabledExtensionCount =
-                                       static_cast<std::uint32_t>(ext.size()),
-                                   .ppEnabledExtensionNames = ext.data()});
+                                       static_cast<std::uint32_t>(exts.size()),
+                                   .ppEnabledExtensionNames = exts.data()});
     }
     catch (vk::SystemError& e) {
         throw std::runtime_error(e.what());

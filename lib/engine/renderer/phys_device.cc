@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file phys_device.cc
-/// @brief Vulkan physical devices.
+/// @brief Vulkan physical device management.
 
 #include <isopunk/engine/renderer.h>
 

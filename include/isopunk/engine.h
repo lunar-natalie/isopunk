@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file engine.h
-/// @brief Declares the main class for ipkengine.
+/// @brief Declares the main ipkengine class.
 
 #ifndef ISOPUNK_ENGINE_H
 #define ISOPUNK_ENGINE_H

@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 /// @file window.h
-/// @brief Graphical window definition.
+/// @brief Window wrapper utility header.
 
 #ifndef ISOPUNK_ENGINE_WINDOW_H
 #define ISOPUNK_ENGINE_WINDOW_H
