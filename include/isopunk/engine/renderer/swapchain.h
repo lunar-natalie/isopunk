@@ -10,6 +10,7 @@
 #define ISOPUNK_ENGINE_RENDERER_SWAPCHAIN_H
 
 #include <memory>
+#include <vector>
 
 #include <vulkan/vulkan.hpp>
 
@@ -24,7 +25,7 @@ class Swapchain : public vkr::SwapchainKHR {
 public:
     Swapchain(vkptr::Device const& dev, vk::SwapchainCreateInfoKHR info);
 
-private:
+    std::vector<vkr::ImageView> image_views;
 };
 
 } // namespace vkx

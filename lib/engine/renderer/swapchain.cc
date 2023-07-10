@@ -22,6 +22,16 @@ vkx::Swapchain::Swapchain(vkptr::Device const&       dev,
                           vk::SwapchainCreateInfoKHR info)
     : vkr::SwapchainKHR(*dev, info)
 {
+    auto images = getImages();
+    image_views.reserve(images.size());
+    vk::ImageViewCreateInfo img_view_info{
+        .viewType         = vk::ImageViewType::e2D,
+        .format           = info.imageFormat,
+        .subresourceRange = {vk::ImageAspectFlagBits::eColor, 0, 1, 0, 1}};
+    for (auto image : images) {
+        img_view_info.image = image;
+        image_views.emplace_back(*dev, img_view_info);
+    }
 }
 
 vkptr::Swapchain
