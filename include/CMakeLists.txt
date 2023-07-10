@@ -21,6 +21,7 @@ target_sources(Headers PUBLIC FILE_SET HEADERS
     "isopunk/engine/renderer/phys_device.h"
     "isopunk/engine/renderer/queues.h"
     "isopunk/engine/renderer/surface.h"
+    "isopunk/engine/renderer/swapchain.h"
     "isopunk/engine/utils.h"
     "isopunk/engine/window.h"
 )

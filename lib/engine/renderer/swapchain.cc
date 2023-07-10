@@ -7,6 +7,7 @@
 /// @brief Vulkan swapchain management.
 
 #include <isopunk/engine/renderer.h>
+#include <isopunk/engine/renderer/swapchain.h>
 
 #include <memory>
 
@@ -17,7 +18,13 @@
 
 using namespace isopunk;
 
-vkptr::SwapchainKHR
+vkx::Swapchain::Swapchain(vkptr::Device const&       dev,
+                          vk::SwapchainCreateInfoKHR info)
+    : vkr::SwapchainKHR(*dev, info)
+{
+}
+
+vkptr::Swapchain
 Renderer::create_swapchain(vkptr::PhysicalDevice const& phys_dev,
                            vkptr::Device const&         dev,
                            vkptr::Surface const&        surface,
@@ -49,5 +56,5 @@ Renderer::create_swapchain(vkptr::PhysicalDevice const& phys_dev,
         info.pQueueFamilyIndices   = v_idx.data();
     }
 
-    return std::make_unique<vkr::SwapchainKHR>(dev->createSwapchainKHR(info));
+    return std::make_unique<vkx::Swapchain>(dev, info);
 }

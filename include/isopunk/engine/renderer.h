@@ -18,6 +18,7 @@
 #include <isopunk/engine/renderer/phys_device.h>
 #include <isopunk/engine/renderer/queues.h>
 #include <isopunk/engine/renderer/surface.h>
+#include <isopunk/engine/renderer/swapchain.h>
 #include <isopunk/engine/window.h>
 
 namespace isopunk {
@@ -53,7 +54,7 @@ private:
     vkptr::Device          dev;
     vkptr::CommandPool     cmd_pool;
     vkptr::CommandBuffer   cmd_buffer;
-    vkptr::SwapchainKHR    swapchain;
+    vkptr::Swapchain       swapchain;
 
     static vkptr::Instance create_instance(EngineConfig const& config,
                                            WindowPtr&          wnd,
@@ -94,7 +95,7 @@ private:
     static vkptr::CommandBuffer
     allocate_command_buffer(vkptr::Device& dev, vkptr::CommandPool& pool);
 
-    static vkptr::SwapchainKHR
+    static vkptr::Swapchain
     create_swapchain(vkptr::PhysicalDevice const& phys_dev,
                      vkptr::Device const&         dev,
                      vkptr::Surface const&        surface,
