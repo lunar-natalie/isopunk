@@ -79,8 +79,8 @@ The provided commands can be run from the Command Palette (default shortcut:
 
 **Build targets**
 
-- `Tasks: Run Build Task`
-  - Default shortcut: `Ctrl/Cmd+Shift+B`
+- `CMake: Build`
+  - Default shortcut: `F7`
 
 **Run the game**
 
