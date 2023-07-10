@@ -9,6 +9,7 @@
 #include <isopunk/engine/renderer.h>
 #include <isopunk/engine/renderer/swapchain.h>
 
+#include <algorithm>
 #include <memory>
 
 #include <vulkan/vulkan.hpp>
@@ -40,12 +41,28 @@ Renderer::create_swapchain(vkptr::PhysicalDevice const& phys_dev,
                            vkptr::Surface const&        surface,
                            vkx::QueueIndexPair const&   queue_idx)
 {
+    vk::Extent2D extent;
+    if (surface->capabilities.currentExtent.width
+        == std::numeric_limits<uint32_t>::max()) {
+        // If the surface extent is undefined, use the size of the requested
+        // images
+        extent.width  = std::clamp(extent.width,
+                                  surface->capabilities.minImageExtent.width,
+                                  surface->capabilities.maxImageExtent.width);
+        extent.height = std::clamp(extent.height,
+                                   surface->capabilities.minImageExtent.height,
+                                   surface->capabilities.maxImageExtent.height);
+    }
+    else {
+        extent = surface->capabilities.currentExtent;
+    }
+
     vk::SwapchainCreateInfoKHR info = {
         .surface          = **surface,
         .minImageCount    = surface->capabilities.minImageCount,
         .imageFormat      = surface->format().format,
         .imageColorSpace  = surface->format().colorSpace,
-        .imageExtent      = surface->extent,
+        .imageExtent      = extent,
         .imageArrayLayers = 1,
         .imageUsage       = vk::ImageUsageFlagBits::eColorAttachment
                       | vk::ImageUsageFlagBits::eTransferSrc,

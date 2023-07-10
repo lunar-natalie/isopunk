@@ -23,12 +23,10 @@ using namespace isopunk;
 
 vkx::Surface::Surface(vkptr::PhysicalDevice const& phys_dev,
                       vkptr::Instance const&       inst,
-                      VkSurfaceKHR&                data,
-                      vk::Extent2D&                extent)
+                      VkSurfaceKHR&                data)
     : vkr::SurfaceKHR(*inst, data),
       phys_dev{phys_dev},
-      capabilities{phys_dev->getSurfaceCapabilitiesKHR(**this)},
-      extent{extent}
+      capabilities{phys_dev->getSurfaceCapabilitiesKHR(**this)}
 {
     m_format          = get_format();
     m_pre_transform   = get_pre_transform();
@@ -121,5 +119,5 @@ vkptr::Surface Renderer::create_surface(WindowPtr&                   wnd,
     VkSurfaceKHR s_data;
     sdl_assert(SDL_Vulkan_CreateSurface(
         wnd->data, static_cast<VkInstance>(**inst), &s_data));
-    return std::make_unique<vkx::Surface>(phys_dev, inst, s_data, wnd->extent);
+    return std::make_unique<vkx::Surface>(phys_dev, inst, s_data);
 }

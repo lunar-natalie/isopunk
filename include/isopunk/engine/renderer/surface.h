@@ -24,8 +24,7 @@ class Surface : public vkr::SurfaceKHR {
 public:
     Surface(vkptr::PhysicalDevice const& phys_dev,
             vkptr::Instance const&       inst,
-            VkSurfaceKHR&                data,
-            vk::Extent2D&                extent);
+            VkSurfaceKHR&                data);
 
     const vk::SurfaceCapabilitiesKHR capabilities;
     const vk::Extent2D               extent;
